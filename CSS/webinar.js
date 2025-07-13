@@ -10,7 +10,8 @@ function getURL(path){
             return `https://drive.google.com/uc?export=view&id=${urlParams.get("id")}`;
         }else{
             const id = path.split('/').slice(-2)[0];// second from last
-            return `https://drive.google.com/uc?export=view&id=${id}`;
+            return `Image/Webinar/${id}.png`;
+            // return `https://drive.google.com/uc?export=view&id=${id}`;
         }
     }else{
         return path;
