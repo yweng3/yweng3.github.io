@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Yang Weng">
-    <meta property="og:description" content="Assistant Professor of ECEE at Arizona State University">
+    <meta property="og:description" content="Associate Professor of ECEE at Arizona State University">
     <meta property="og:image" content="https://www.public.asu.edu/~yweng2/Iamge/Photos/Yang.jpg">
     <meta property="og:url" content="https://www.public.asu.edu/~yweng2/">
     <meta name="author" content="Yang Weng">
@@ -31,7 +31,13 @@
     <div class="row">
 
         <!-- Top-bar Menu -->
-        <!--#include file="menu.html" -->
+        <script>
+          fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById('menu-placeholder').innerHTML = data;
+            });
+        </script>
 
         <!-- Top Big Title -->
         <div class="bigtitle" id="bigtitle">
