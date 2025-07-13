@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Meta Info for Google Search -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Yang Weng">
+    <meta property="og:description" content="Assistant Professor of ECEE at Arizona State University">
+    <meta property="og:image" content="https://www.public.asu.edu/~yweng2/Iamge/Photos/Yang.jpg">
+    <meta property="og:url" content="https://www.public.asu.edu/~yweng2/">
+    <meta name="author" content="Yang Weng">
+
+    <title>Webinar</title>
+
+    <!--dependencies-->
+    <link rel="stylesheet" href="../../CSS/homepage.css">
+    <link rel="stylesheet" href="../../CSS/webinar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"    integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../../CSS/index.js" type="module"></script>
+    <style type="text/css">
+        a{color:black;}
+    </style>
+</head>
+
+<body>
+
+    <!-- Entire Page -->
+    <div class="row">
+
+        <!-- Top-bar Menu -->
+        <!--#include virtual="../../menu.html" -->
+
+        <!-- Top Big Title -->
+        <div class="bigtitle" id="bigtitle">
+            <div class="thetitle">Webinar</div>
+        </div>
+
+        <!-- Webinars -->
+        <main class="container">
+            <div class="column">
+
+            <div class="web-individual">
+                <div class="web">
+                    <div class="speaker">
+                    <div class="speaker-content">
+                        <div class="speaker-photo" style="background-image:url(https://drive.google.com/uc?export=view&id=13ivUGfdRAy2z32b6kCJE--iSwmRx-CWV);"></div>
+                        <div class="speaker-name">Meng Wang</div>
+                        <div class="speaker-school">Rensselaer Polytechnic Institute</div>
+                    </div>
+                    <div class="speaker-content">
+                    <div class="talktitle">PMU Data Analytics Using Low-Dimensional Models</div>
+                        <p><b>Date</b>:&nbsp;&nbsp;June 7, 2019</p>
+                        <p><b>Speaker</b>:&nbsp;&nbsp;<a href="https://sites.ecse.rpi.edu/~wang/">Meng's website &nbsp;&nbsp;</a></p>
+                        <p><b>Contact</b>:&nbsp;&nbsp;wangm7@rpi.edu</p>
+                        <p><b>Material</b>:&nbsp;&nbsp;<a class="flyer" href="https://drive.google.com/uc?export=view&id=18qfy7ojH6P31144szd3HnMNDfD6ET-7E"><span>Flyer</span></a>&nbsp;&nbsp;<a class="flyer" href="https://drive.google.com/uc?export=view&id=1dDwgczAU-STmmERABv2E9HuF5Kyvc1Ur"><span>Slides</span></a></p>
+                   </div>
+                </div>
+                </div>
+                <br>
+                <br>
+                <div class="bios">
+                    <b>Bios</b>
+                    <p>Meng Wang is an Assistant Professor in the Department of Electrical, Computer and Systems Engineering at Rensselaer Polytechnic Institute. She received B.S. and M.S. degrees from Tsinghua University, China, in 2005 and 2007, respectively. She received the Ph.D. degree from Cornell University, Ithaca, NY, USA, in 2012. Prior to joining RPI, she was a postdoc research scholar at Duke University. Her research areas involve machine learning and data analytics, energy systems, signal processing, and optimization. She is a recipient of Army Research Office Young Investigator Program (YIP) Award. She also received School of Engineering Research Excellence Award from Rensselaer. She is a guest editor of IEEE Journal of Selected Topics in Signal Processing Special Issue on Signal and Information Processing for Critical Infrastructures in 2018.
+                    </p>
+                </div>
+                <div class="bios">
+                    <b>Abstract</b>
+                    <p>Phasor Measurement Units provide fine-grained measurements to enhance the system visibility to the operators and reduce blackouts. The spatial-temporal blocks of PMU data have intrinsic low-dimensional structures due to the correlations governed by the underlying physical system. The central idea of the talk is to show that one can exploit the low-dimensional structure to develop fast model-free methods for information recovery with analytical guarantees. One example is missing data recovery and error correction for synchrophasor data. The low data quality currently prevents the implementation of synchrophasor-data-based real-time monitoring and control. We developed model-free approaches to recover the PMU data even under the extreme scenarios of simultaneous and consecutive data losses and data errors across all channels for some time. By exploiting the low-dimensional structures, we formulated the data recovery problem as nonconvex optimization problems and developed fast algorithms to find the global minimum with a linear rate. The second example is feature extraction from privacy-preserved measurements. One can add noise and quantize the data significantly to hide the information in individual measurements. We developed a method for the central operator to recover the dominant features from many privacy-preserved measurements collectively. This enables the data sharing among different parties without sacrificing the privacy.
+                    </p>
+                </div>
+                <div class="materials">
+                <div class="bios">
+                    <b>Video</b><br>
+                    <iframe width="700" height="540" src="https://www.youtube.com/embed/0T6NBc7vUwc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                </div>
+                    <div class="bios">
+                        <b>Papers</b><br>
+                        <ul>
+                            <li><a href="https://wendy0601.github.io/files/recent.pdf">Recent Results of PMU Data Analytics by Exploiting Low-dimensional Structures</a></li>
+                        </ul>
+                    <b>Dataset</b><br>
+                    <ul>
+                        <li><a href="https://bigdata.seas.gwu.edu/data-set-4-distribution-pmu-data-set/">Distribution Micro-PMU Data Set</a></li>
+                        <li><a href="https://bigdata.seas.gwu.edu/data-set-19-synthetic-pmu-data-set/">Synthetic PMU Data – USA</a></li>
+                        <li><a href="https://bigdata.seas.gwu.edu/data-set-20-epfl-campus-pmu-data-set/">EPFL Campus PMU Data Set – Switzerland</a></li>
+                        <li><a href="https://bigdata.seas.gwu.edu/data-set-33-lbnl-micro-pmu-data-set/">LBNL Micro-PMU Data Set – USA</a></li>
+                    </ul>
+                    <b>More videos</b><br>
+                    <ul>
+                        <li><a href="https://cred-c.org/videos/towards-attack-resilient-data-analytics-power-grid-operations">Towards Attack Resilient Data Analytics for Power Operations</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=WDA6wb9cWnQ">Big Data Analysis Technology and Tools Seminar XI</a></li>
+                    </ul>
+                    </div>
+                    </div>
+            </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+<script type="text/javascript">
+    document.getElementById("menu-webinar").classList.add('current');
+</script>
+
+</html>

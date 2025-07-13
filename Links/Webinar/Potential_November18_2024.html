@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Meta Info for Google Search -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Yang Weng">
+    <meta property="og:description" content="Assistant Professor of ECEE at Arizona State University">
+    <meta property="og:image" content="https://www.public.asu.edu/~yweng2/Iamge/Photos/Yang.jpg">
+    <meta property="og:url" content="https://www.public.asu.edu/~yweng2/">
+    <meta name="author" content="Yang Weng">
+
+    <title>Webinar</title>
+
+    <!--dependencies-->
+    <link rel="stylesheet" href="../../CSS/homepage.css">
+    <link rel="stylesheet" href="../../CSS/webinar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"    integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../../CSS/index.js" type="module"></script>
+    <style type="text/css">
+        a{color:black;}
+    </style>
+</head>
+
+<body>
+
+    <!-- Entire Page -->
+    <div class="row">
+
+        <!-- Top-bar Menu -->
+        <!--#include virtual="../../menu.html" -->
+
+        <!-- Top Big Title -->
+        <div class="bigtitle" id="bigtitle">
+            <div class="thetitle">Webinar</div>
+        </div>
+
+        <!-- Webinars -->
+        <main class="container">
+            <div class="column">
+
+            <div class="web-individual">
+                <div class="web">
+                    <div class="speaker">
+                    <div class="speaker-content">
+                        <div class="speaker-photo" style="background-image:url(../../Image/Webinar/1fP6A-tJPOO81LdQKKcLJdkaFQrBIyxZC.png);"></div>
+                        <div class="speaker-name">Shrirang (Shri) Abhyankar</div>
+                        <div class="speaker-school">Pacific Northwest National Laboratory</div>
+                    </div>
+                    <div class="speaker-content">
+                    <div class="talktitle">Potential of Large Language Models (LLMs) for Grid Operations and Planning</div>
+                        <p><b>Date</b>:&nbsp;&nbsp;November 18, 2024</p>
+                        <p><b>Speaker</b>:&nbsp;&nbsp;<a href="https://ieeexplore.ieee.org/author/37989693200">Shrirang's website &nbsp;&nbsp;</a></p>
+                        <p><b>Contact</b>:&nbsp;&nbsp;shri@pnnl.gov</p>
+                        <p><b>Material</b>:&nbsp;&nbsp;<a class="flyer" href="https://drive.google.com/uc?export=view&id=14KLZrpQjQKGp2M1flfEANj_Rt33ekAB5"><span>Flyer</span></a>&nbsp;&nbsp;<a class="flyer" href="https://drive.google.com/uc?export=view&id=1reiKbiGK5grXfhvfd_op-MP9lZvs4dRn"><span>Slides</span></a></p>
+                   </div>
+                </div>
+                </div>
+                <br>
+                <br>
+                <div class="bios">
+                    <b>Bios</b>
+                    <p>Shrirang (Shri) Abhyankar is a senior scientist and team lead in the Energy Systems Engineering group at Pacific Northwest National Laboratory (PNNL). He received M.S. and Ph.D. degrees from Illinois Institute of Technology in 2006 and 2011, respectively. From 2009-2019, he was with Argonne National Laboratory (ANL) working with the Mathematics & Computer Science and Energy System Divisions. Since 2019, he is with the Electricity Infrastructure and Buildings (EIBD) division at PNNL. Shri is a lead developer of several open-source tools, including ExaGO, GridPACK, and has made significant contributions to several other libraries – PETSc/TAO, MATPOWER, and GridLab-D. Recently, his intrigue in LLMs led to the development of grid visualization powered by ChatGPT called “ChatGrid”.
+                    </p>
+                </div>
+                <div class="bios">
+                    <b>Abstract</b>
+                    <p>Generative AI and large language models (or LLMs) have been a hot topic in today’s times with ChatGPT, Gemini, Llama, and other such products capturing people’s imagination. From writing a poem for your loved one to writing a Python code, creating a summary of a big report, and even creating a picture of an astronaut eating deep dish pizza in Soldier Field, LLMs have revolutionized the field of artificial intelligence in a unique way. So, what does this technology hold for grid operations and planning? What are the use cases? What are the concerns in using it?
+Join us for a brief introduction to large language models and their on-going adoption in the electric utility industry. Learn about ChatGrid  – a LLM-based application developed at Pacific Northwest National Laboratory (PNNL) for grid operations and planning. Lastly, participate in an open conversation to talk about the uses, misuses, benefits, and concerns of using LLMs in the electric power sector.
+                    </p>
+                </div>
+                <div class="materials">
+                <div class="bios">
+                    <b>Video</b><br>
+                    <iframe width="700" height="540" src="https://www.youtube.com/embed/KMWEeXw8I8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                </div>
+<br>                    <div class="bios">
+                        <b>Q & A</b>
+                        <p><strong>Q</strong>: Applications in Europe for the business in energy transition?<br>
+<strong>A</strong>: Not yet for Chat grid, but open to conversations. There's a European product called grit chat, a conversational platform, but speaker hasn't accessed it to know details.<br>
+<br>
+<strong>Q</strong>: Tried with tragipity? Listing congested lines and marginal generators?<br>
+<strong>A</strong>: Tried related visualization with optimal power flow data. Got answers for showing lines with certain loading percentages from CHA G-P-T. Haven't tried prompting for all congested lines but similar to other prompts. For marginal generators, could get and visualize results for those with less than a certain capacity.<br>
+<br>
+<strong>Q</strong>: How does Chat Grid handle improper names in questions?<br>
+<strong>A</strong>: Created question category for typos/non-standard terminology. Chatgrid/charged GPT can understand with typos/synonyms. If data's not there, says so instead of hallucinating. Uses a rag model to query database; if data can't be fetched, admits lack of info.<br>
+<br>
+<strong>Q</strong>: Running different studies like PB analysis with o acop?<br>
+<strong>A</strong>: A-C-O-P-F is the standard optimal power flow model. Different cases have different operating points based on contingencies or renewable energy scenarios. It can be used for PB analysis and other related analyses.<br>
+<br>
+<strong>Q</strong>: Can the application work for distribution system operation?<br>
+<strong>A</strong>: Not tried on distribution yet, but no reason it can't if there's necessary data and infrastructure as grid laws are the same for transmission and distribution.<br>
+<br>
+<strong>Q</strong>: Can Chat Grade connect to other software for power flow and dynamic simulation?<br>
+<strong>A</strong>: Exagger creates output file ingested by Chat Grade. In theory, if another simulation tool has the right input file, Chat Grade can run it. Code basis is kept open for experimentation with some sample input files, and it can be customized for different data formats.<br>
+<br>
+<strong>Q</strong>: Incorporating other data like weather, sensor data? Example: generating a GM file with specific loading data?<br>
+<strong>A</strong>: Encourages trying it. Colleagues' work on scenario generation can generate code for creating files. There's precedent from friends' work on creating input files using elements. Accuracy is an ongoing research effort but can be tried out fairly fast.<br>
+<br>
+<strong>Q</strong>: How are LLM useful for forecasting tasks in power systems?<br>
+<strong>A</strong>: Traditional AI methods work well for forecasting. LLM is more generative. It works well with language but uncertain about its performance with numeric data needed for forecasting.<br>
+<br>
+<strong>Q</strong>: Challenges integrating LLM in power grid data (e.g., numerical data processing)?<br>
+<strong>A</strong>: Not data processing itself. Challenges are designing prompts to make LLM adapt to questions for reliability/accuracy. Also, testing its reliability/accuracy led to choosing a rag model over a fine-tune model.<br>
+<br>
+
+                        </p>
+                    </div>
+                    </div>
+            </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+<script type="text/javascript">
+    document.getElementById("menu-webinar").classList.add('current');
+</script>
+
+</html>

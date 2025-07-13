@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Meta Info for Google Search -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Yang Weng">
+    <meta property="og:description" content="Assistant Professor of ECEE at Arizona State University">
+    <meta property="og:image" content="https://www.public.asu.edu/~yweng2/Iamge/Photos/Yang.jpg">
+    <meta property="og:url" content="https://www.public.asu.edu/~yweng2/">
+    <meta name="author" content="Yang Weng">
+
+    <title>Webinar</title>
+
+    <!--dependencies-->
+    <link rel="stylesheet" href="../../CSS/homepage.css">
+    <link rel="stylesheet" href="../../CSS/webinar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"    integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../../CSS/index.js" type="module"></script>
+    <style type="text/css">
+        a{color:black;}
+    </style>
+</head>
+
+<body>
+
+    <!-- Entire Page -->
+    <div class="row">
+
+        <!-- Top-bar Menu -->
+        <!--#include virtual="../../menu.html" -->
+
+        <!-- Top Big Title -->
+        <div class="bigtitle" id="bigtitle">
+            <div class="thetitle">Webinar</div>
+        </div>
+
+        <!-- Webinars -->
+        <main class="container">
+            <div class="column">
+
+            <div class="web-individual">
+                <div class="web">
+                    <div class="speaker">
+                    <div class="speaker-content">
+                        <div class="speaker-photo" style="background-image:url(../../Image/Webinar/1DeBh9AMS4rjYNqGRuwHB1bykBqkI5DOh.png);"></div>
+                        <div class="speaker-name">Rodman Moore</div>
+                        <div class="speaker-school">PPL Corporation</div>
+                    </div>
+                    <div class="speaker-content">
+                    <div class="talktitle">Enhancing Operational Efficiency with Customer Insights</div>
+                        <p><b>Date</b>:&nbsp;&nbsp;December 12, 2024</p>
+                        <p><b>Speaker</b>:&nbsp;&nbsp;<a href="https://www.linkedin.com/in/rodman-b-moore-iii-0142812b/">Rodman's website &nbsp;&nbsp;</a></p>
+                        <p><b>Material</b>:&nbsp;&nbsp;<a class="flyer" href="https://drive.google.com/uc?export=view&id=1yXNXgs2m_zjcN_mhZg3BTn3B8o4il-SG"><span>Flyer</span></a>&nbsp;&nbsp;
+                   </div>
+                </div>
+                </div>
+                <br>
+                <br>
+                <div class="bios">
+                    <b>Bios</b>
+                    <p>Rodman Moore is an experienced analytics leader with a strong background in data-driven decision-making and team management. He earned a bachelor’s degree in actuarial science from Temple University and a master’s degree in applied Statistics from West Chester University. Rodman’s career experience includes roles at Travelers Insurance and AlphaBroder. He currently manages the customer analytics and reporting teams at PPL, where he drives strategic insights and operational excellence by leveraging advanced analytics and reporting techniques. In addition to his professional responsibilities, Rodman is married with two children residing in Philadelphia Pa. In his spare time, he enjoys mountain biking and outdoor activities.
+                    </p>
+                </div>
+                <div class="bios">
+                    <b>Abstract</b>
+                    <p>Leveraging call transcriptions for customer insights is a powerful way to enhance understanding of customer needs, preferences, and pain points. By analyzing transcripts of customer interactions, businesses can uncover recurring themes, sentiment trends, and specific issues that may otherwise go unnoticed. Join us for a brief discussion about Call-Volt a new tool at PPL that allows the business to leverage transcriptions to create operational efficiencies and savings for PPL stakeholders.
+                    </p>
+                </div>
+                <div class="materials">
+                <div class="bios">
+                    <b>Video</b><br>
+                    <iframe width="700" height="540" src="https://www.youtube.com/embed/ZWC4cCYvvAo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                </div>
+<br>                    <div class="bios">
+                        <b>Q & A</b>
+                        <p><strong>Q</strong>: When you say data, what types of data does your team have?<br>
+<strong>A</strong>: Our team has access to financial data, metering data, demographic data, and external sources of data from 3rd party partners like Experian. Some data is structured (in SQL databases, hive tables, parquet files etc.) and some is unstructured. The limitation in this particular project was around audio transcripts.<br>
+<br>
+<strong>Q</strong>: How about the data quality? For example, when looking into the billing data, how often is it wrong or mislabeled?<br>
+<strong>A</strong>: Some of our data is very good, like billing data where you can see transactions and answer many questions. However, we don't have all the data we need. One area where data quality is lacking is in web data. There have been issues like tokens getting repurposed on the web side, and sometimes operational people's focus isn't on data quality which impacts it negatively.<br>
+<br>
+<strong>Q</strong>: You mentioned having a data analytics team to handle the 9,000 calls for statistical analysis. What does that mean exactly?<br>
+<strong>A</strong>: In the past, we were good at providing metrics around calls like average handle time, service level on calls, etc. But we were not good at knowing the context of the calls, i.e., what customers were actually asking about on the phone to service them best.<br>
+<br>
+<strong>Q</strong>: Do you get data from both IVR and agents for your analytics, or only use the IVR as the source?<br>
+<strong>A</strong>: Our group has access to both data pieces and has done analysis on things like where people are failing in the IVR and discovered issues like bugs in the IVR as a result.<br>
+<br>
+<strong>Q</strong>: Is your company trying to do it (use of language models for transcription etc.) on the open source version which is free with more labor from your team, or are you willing to pay some companies to handle the large language model input and output for you?<br>
+<strong>A</strong>: In the past, we explored having outside companies do the work but currently, Ben's team was able to come up with an in-house solution that is far less costly than using outside sources like Microsoft. Ben Spanswick added that it's a constant build vs buy discussion and if there's a viable use case to handle it in-house, they'll take that opportunity but are also open to 3rd parties.<br>
+<br>
+<strong>Q</strong>: Are you getting labels from what the customers type on the cell phone or extracting them from the natural language conversation?<br>
+<strong>A</strong>: We are learning the labels from the summaries of the model, from the agent interactions and not from the IVR labels. These are the topics customers are actually discussing.<br>
+<br>
+<strong>Q</strong>: How confident are you in these computer-learned labels?<br>
+<strong>A</strong>: We don't have an exact confidence level but by and large it has been relatively consistent and trustworthy. Even if it's 70% or 65% confident, it's much better than having no insight before. Also, Shawn is working with the QA team to get scoring for every call based on certain criteria and working with the training team to refine training methodology using these insights.<br>
+<br>
+<strong>Q</strong>: What are the next steps for your work? Can you give a plan like within 5 years or within one year?<br>
+<strong>A</strong>: There are operational goals like lowering budget. There are also goals related to training, getting PUC complaints and quality assurance numbers up, and improving customer satisfaction. From a data science perspective, Ben's team is working on an agent assist tool and there are customer segmentation pieces going on related to customer services and working cross-functionally.<br>
+<br>
+<strong>Q</strong>: What program does the model used in your presentation to capture the data?<br>
+<strong>A</strong>: We use vendors like Twilio and Collabrio for phone data. Customer interactions are stored in the cloud and then made available in parquet file form. Audio files are stored elsewhere. Ben's team uses Azure to grab audio transcriptions, runs them through a model to get text transcriptions which are saved in a hive table. They also use some Python, there's on-prem SQL stuff, and the team is still using a little bit of SAS but planning to migrate away from it in 2025. There are also some on-prem databases like Oracle.<br>
+<br>
+<strong>Q</strong>: Do you get voltage data, power quality data, topology data etc. and do analytics on them?<br>
+<strong>A</strong>: We do have access to that data. Most of our interaction with voltage data is around customer services, probably around usage. Ben's team and others have done more work on interval data and power quality processing, and while most usage for that data we'd do is around billing, someone on the team could pull it if needed.<br>
+<br>
+<strong>Q</strong>: With a large amount of data like 9,000 calls per day, have you ever faced any trouble with the computational burden like it being too slow for transcription or translation into the desired data format?<br>
+<strong>A</strong>: We were standing up additional workers in Azure to do the processing for the calls as initially there was more data than anticipated computationally. Ben's team has been good about having the data available the next morning. Ben Spanswick added that cloud provides good scalability but price can be an issue. Sometimes advanced sampling methods might be needed to keep costs in check and the machine learning engineering team has done a great job optimizing the code.<br>
+<br>
+<strong>Q</strong>: How many GPUs do you have in your company for this type of job?<br>
+<strong>A</strong>: He wasn't sure exactly but thought there were 3 GPU clusters, but said to not quote him on that and that he'd need to check with the MLE team to diagnose it exactly. Po-Chen Chen then provided a more in-depth perspective on the IT infrastructure, on-prem vs cloud, and how it relates to capitalization and operating expenses and the challenges around investing in computational resources like GPUs from a utility's financial and investment perspective.<br>
+<br>
+<strong>Q</strong>: How do you secure the privacy part when you do analysis and engage with external service providers?<br>
+<strong>A</strong>: 3rd party vendors have to go through the IT governance process and be approved. Checks are done to ensure security and other aspects are up to par. Ben Spanswick added that it's case-dependent and there are set governance rules. Utilities are very cautious with their information, especially when it comes to generative AI models to make sure data doesn't leak or get trained on open source models outside their firewall.<br>
+<br>
+<strong>Q</strong>: Does your NLP handle non-English customer calls?<br>
+<strong>A</strong>: Our current IVR does not handle non-English calls. If a customer calls in speaking another language, the call is conferenced with a translator service. There's an intention to work on getting a newer iteration in 2025 that might handle it better and if a model could be employed to save costs instead of using the translator service, that would be welcome.<br>
+<br>
+
+                        </p>
+                    </div>
+                    </div>
+            </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+<script type="text/javascript">
+    document.getElementById("menu-webinar").classList.add('current');
+</script>
+
+</html>

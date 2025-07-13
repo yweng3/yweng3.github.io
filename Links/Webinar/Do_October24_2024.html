@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Meta Info for Google Search -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Yang Weng">
+    <meta property="og:description" content="Assistant Professor of ECEE at Arizona State University">
+    <meta property="og:image" content="https://www.public.asu.edu/~yweng2/Iamge/Photos/Yang.jpg">
+    <meta property="og:url" content="https://www.public.asu.edu/~yweng2/">
+    <meta name="author" content="Yang Weng">
+
+    <title>Webinar</title>
+
+    <!--dependencies-->
+    <link rel="stylesheet" href="../../CSS/homepage.css">
+    <link rel="stylesheet" href="../../CSS/webinar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"    integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../../CSS/index.js" type="module"></script>
+    <style type="text/css">
+        a{color:black;}
+    </style>
+</head>
+
+<body>
+
+    <!-- Entire Page -->
+    <div class="row">
+
+        <!-- Top-bar Menu -->
+        <!--#include virtual="../../menu.html" -->
+
+        <!-- Top Big Title -->
+        <div class="bigtitle" id="bigtitle">
+            <div class="thetitle">Webinar</div>
+        </div>
+
+        <!-- Webinars -->
+        <main class="container">
+            <div class="column">
+
+            <div class="web-individual">
+                <div class="web">
+                    <div class="speaker">
+                    <div class="speaker-content">
+                        <div class="speaker-photo" style="background-image:url(../../Image/Webinar/195q25aOHrHG0JDR2sQLoP6-G_OiGFuVH.png);"></div>
+                        <div class="speaker-name">Robin Preece</div>
+                        <div class="speaker-school">University of Manchester</div>
+                    </div>
+                    <div class="speaker-content">
+                    <div class="talktitle">Do wind farms make blackouts more likely? Finding out the answer using dynamic models of cascading failures.</div>
+                        <p><b>Date</b>:&nbsp;&nbsp;October 24, 2024</p>
+                        <p><b>Speaker</b>:&nbsp;&nbsp;<a href="https://ieeexplore.ieee.org/author/38227862500">Robin's website &nbsp;&nbsp;</a></p>
+                        <p><b>Contact</b>:&nbsp;&nbsp;robin.preece@manchester.ac.uk</p>
+                        <p><b>Material</b>:&nbsp;&nbsp;<a class="flyer" href="https://drive.google.com/uc?export=view&id=1HDXtW5wQv8CqUR-LODsxDbreWQL1wH3d"><span>Flyer</span></a>&nbsp;&nbsp;<a class="flyer" href="https://drive.google.com/uc?export=view&id=10BgzflWg5IlcwPOsY0gzYMZqlQmVdmIL"><span>Slides</span></a></p>
+                   </div>
+                </div>
+                </div>
+                <br>
+                <br>
+                <div class="bios">
+                    <b>Bios</b>
+                    <p>Dr Robin Preece is a Reader in Future Power Systems in the Department of Electrical and Electronic Engineering at The University of Manchester, where he has been an academic since July 2014. Since then, he has helped to secure over £7.5 million in research funding for The University of Manchester. Dr Preece has published more than 100 international peer-reviewed papers in numerous different top-tier journals and conferences. His research is focussed on the dynamic stability of power systems with large quantities of power electronics and in quantifying the impacts of uncertainties and variability on network performance. He has presented his research at major international conferences hosted by the IET, IEEE, IFAC, and Cigré.
+
+                    </p>
+                </div>
+                <div class="bios">
+                    <b>Abstract</b>
+                    <p>In this talk, Robin will present research work focussed on the incorporation of dynamics into cascading failure analysis in large power systems and the implications of considering stability as part of blackout risk quantification. Traditional cascading failure modelling has been completed using static (power flow based) models of systems. But as we incorporate more low-carbon (and low inertia) generation sources into the system, it becomes more volatile and potentially more prone to under-frequency load shedding when large disturbances occur. The traditional static methods do not provide a way to capture system frequency, let alone the regional variations in system frequency and how these may lead to regional loss of load. This talk will outline the dynamic methods and models used, and showcase results which reveal how blackout risk is affected by renewable generation.
+                    </p>
+                </div>
+                <div class="materials">
+                <div class="bios">
+                    <b>Video</b><br>
+                    <iframe width="700" height="540" src="https://youtu.be/KK-xGUrc5Pw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                </div>
+<br>                    <div class="bios">
+                        <b>Q & A</b>
+                        <p><strong>Q</strong>: What is the cascade simulation duration and findings?<br>
+<strong>A</strong>: Up to a few minutes, sometimes 5 - 10 minutes with thermal line tracking acceleration. Waiting for line overload in stable system otherwise.<br>
+<br>
+<strong>Q</strong>: What's the impact of secondary control?<br>
+<strong>A</strong>: Has a small effect. Frequency mainly maintained by primary and fast response, but secondary control can slightly adjust frequency. Effects of disabling it not studied yet.<br>
+<br>
+<strong>Q</strong>: How to decide online/offline in n1 or n2 contingency analysis?<br>
+<strong>A</strong>: Use security constrained opia for economic dispatch with 20% reserve margin. Add fast frequency containment if needed due to inertia issues.<br>
+<br>
+<strong>Q</strong>: What's the ratio of FFR to traditional frequency response?<br>
+<strong>A</strong>: No fixed ratio. Use primary control with 4% droop. Add FFR if primary control can't handle frequency changes.<br>
+<br>
+<strong>Q</strong>: Why only consider disconnecting lines in n - 2 contingencies?<br>
+<strong>A</strong>: To simplify. Focus on any two line outages and their propagation, not specific fault cause. Could model other faults but more complex.<br>
+<br>
+<strong>Q</strong>: Do you consider regional frequency in testing?<br>
+<strong>A</strong>: Illinois case network not stand-alone, Texas case more realistic. Frequency varies based on network connection, inertia, impedance and connectivity.<br>
+<br>
+<strong>Q</strong>: What causes difference in risk between zones with high connectivity but low expected value?<br>
+<strong>A</strong>: Not sure if frequency related. Could be line loading. Difficult to control variables precisely in network models. Need more investigation.<br>
+<br>
+
+                        </p>
+                    </div>
+                    </div>
+            </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+<script type="text/javascript">
+    document.getElementById("menu-webinar").classList.add('current');
+</script>
+
+</html>
