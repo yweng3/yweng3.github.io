@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Meta Info for Google Search -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Yang Weng">
+    <meta property="og:description" content="Assistant Professor of ECEE at Arizona State University">
+    <meta property="og:image" content="https://www.public.asu.edu/~yweng2/Iamge/Photos/Yang.jpg">
+    <meta property="og:url" content="https://www.public.asu.edu/~yweng2/">
+    <meta name="author" content="Yang Weng">
+
+
+    <title>Data Source</title>
+
+    <!--dependencies-->
+    <link rel="stylesheet" href="../../CSS/homepage.css">
+    <link rel="stylesheet" href="../../CSS/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+    integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../../CSS/index.js" type="module"></script>
+</head>
+
+<body>
+
+    <!-- Entire Page -->
+    <div class="row">
+
+        <!-- Top-bar Menu -->
+        <!--#include virtual="../../menu.html" -->
+
+        <!-- Top Big Title -->
+        <div class="bigtitle" id="bigtitle">
+            <div class="thetitle">Data Source</div>
+        </div>
+
+        <!-- Image and title -->
+        <main class="row container">
+            <div class="column">
+
+            <div class="content-title" style="color:var(--asu-red)">
+                Power Data
+            </div>
+            
+            <h4>Solar Generation</h4>
+
+            <ul>
+                <li><p>National Solar Radiation Data Base 1961-1990 (NSRDB): NSRDB contains 30 years of solar radiation and supplementary meteorological data from 237 NWS sites in the U.S., plus sites in Guam and Puerto Rico, <a href="https://nsrdb.nrel.gov/data-sets/how-to-access-data">Link</a>
+                </p></li>
+
+                <li><p>
+                PVWatts Calculator: Estimates the energy production and cost of energy of grid-connected photovoltaic (PV) energy systems throughout the world, <a href="https://urldefense.com/v3/__http://pvwatts.nrel.gov/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCDXgg0Ayw$">Link</a>
+                </p></li>
+
+                <li><p>
+                Denver Solar TAC data: SolarTAC includes common areas for performance validation testing of new solar energy system components, including areas for proprietary testing by Member Companies, Sampling period: 10 minutes, 2011, <a href="https://urldefense.com/v3/__http://www.solartac.org/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCDg5Du9LQ$">Link</a>
+                </p></li>
+
+                <li><p>
+                    One Year Submillisecond Fast Solar Database: This dataset includes gathering 18-month raw PV data at time intervals of about 200 µs (5 kHz sampling). A post-processing 365-day day-by-day downsampled version, converted to 10 ms intervals (100 Hz sampling), is also included. 
+                    <a href="https://ieee-dataport.org/open-access/one-year-submillisecond-fast-solar-database">Link</a>
+                </p></li>
+            </ul>
+
+
+            <h4>Wind Generation</h4>
+
+            <ul>
+                <li><p>
+                GECAD wind speed data: The data-base includes the values of the wind speed, recorded with time intervals of 10 minutes during the entire year of 2011, <a href="https://site.ieee.org/pes-iss/data-sets/">Link</a>
+                </p></li>
+
+                <li><p>
+                Ninja: Renewables.ninja allows you to run simulations of the hourly power output from wind and solar power plants located anywhere in the world, <a href="https://urldefense.com/v3/__https://www.renewables.ninja/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCCBEEEriw$">Link</a>
+                </p></li>
+            </ul>
+
+
+            <h4>Load (Consumption)</h4>
+
+            <ul>
+                <li><p>
+                PJM Hourly Energy Consumption data: PJM Interconnection LLC (PJM) is a regional transmission organization (RTO) in the United States. It is part of the Eastern Interconnection grid operating an electric transmission system serving all or parts of Delaware, Illinois, Indiana, Kentucky, Maryland, Michigan, New Jersey, North Carolina, Ohio, Pennsylvania, Tennessee, Virginia, West Virginia, and the District of Columbia, <a href="https://urldefense.com/v3/__https://www.kaggle.com/robikscube/hourly-energy-consumption__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCBBJ42M0Q$">Link</a>
+                </p></li>
+
+                <li><p>
+                ADRES data: The research project ADRES-Concept deals with the technical feasibility of fully autonomous-decentralized renewable energy systems, Real and reactive powers collected at 1 sec frequency, The data contains measurements of 7 days' in summer and 7 days' in winter, <a href="https://urldefense.com/v3/__http://www.ea.tuwien.ac.at/projects/adres_concept/EN/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCDYiibRfQ$">Link</a>
+                </p></li>
+
+                <li><p>
+                Randomized Hourly Load Data for use with Taxonomy Distribution Feeders: Hourly load profile for Gridlab-D Taxonomy distribution feeders,
+                <a href="https://catalog.data.gov/dataset/?q=Taxonomy+Distribution+Feeders&sort=views_recent+desc&ext_location=&ext_bbox=&ext_prev_extent=">Link,</a> <a href="https://urldefense.com/v3/__http://en.openei.org/datasets/files/968/pub/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCCcvVSZQA$">Download</a>
+                </p></li>
+            </ul>
+
+
+
+            <h4>Weather Data</h4>
+
+            <ul>
+                <li><p>
+                Weather data source: Contributed by <a href="https://urldefense.com/v3/__https://shawxiaozhang.github.io/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCDpvAXB8Q$">Xiao Zhang</a> at Google,  <a href="https://urldefense.com/v3/__https://shawxiaozhang.github.io/wefacts/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCCSGiNagg$">Link</a>
+                <!--(6) https://github.com/yzliao/distribution-grid-data-source-->
+                </p></li>
+            </ul>
+
+            <h4>Distribution Grid Test Case Data</h4>
+
+            <ul>
+                <li><p>
+                IEEE Distribution Test Feeders: <a href="https://urldefense.com/v3/__https://site.ieee.org/pes-testfeeders/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCALUyOKrw$">Link</a>
+                </p></li>
+
+                <li><p>
+                EPRI Test Circuits: <a href="https://urldefense.com/v3/__https://sourceforge.net/p/electricdss/code/HEAD/tree/trunk/Distrib/EPRITestCircuits/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCA8fAgzKA$">Link</a> , Available in OpenDSS format
+                </p></li>
+
+                <li><p>
+                Gridlab-D Taxonomy of Prototypical Feeders: <a href="https://urldefense.com/v3/__https://sourceforge.net/p/gridlab-d/code/HEAD/tree/Taxonomy_Feeders/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCAAKN8KeA$">Link</a>, <a href="https://urldefense.com/v3/__http://emac.berkeley.edu/gridlabd/taxonomy_graphs/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCA1pm3f2w$">Map</a>, Available in Gridlab-D format
+                </p></li>
+
+                <li><p>
+                REDS: Repository of Distribution Systems: <a href="https://urldefense.com/v3/__http://www.dejazzer.com/reds.html__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCDah-ozuA$">Link</a>
+                </p></li>
+
+                <li><p>
+                UKGDS: United Kingdom Generic Distribution System: <a href="https://urldefense.com/v3/__https://github.com/sedg/ukgds__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCAjCq1whA$">Link</a>, the original link is broken.
+                </p></li>
+
+                <li><p>
+                European Distribution System Oprators Observatory: <a href="https://urldefense.com/v3/__https://ec.europa.eu/jrc/en/publication/distribution-system-operators-observatory-european-electricity-distribution-systems-representative__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCBmB4r0_w$">Link</a>, Available in Matpower format,
+                Need to request the test cases
+                </p></li>
+            </ul>
+
+            <h4>Other Data Websites for Power Areas</h4>
+            <ul>
+                <li><p>
+                Open Data Sets by IEEE PES Subcommittee on Big Data & Analytics for Power Systems: <a href="https://bigdata.seas.gwu.edu/">Link</a>, <a href="https://site.ieee.org/pes-bdaps/files/2020/07/BDA_WhitePaper_v1.pdf">White Paper</a>
+                </p></li>
+
+                <li><p>
+                Open Data Sets by IEEE PES Subcommittee on Intelligent Systems: <a href="https://site.ieee.org/pes-iss/data-sets/">Link</a>
+                </p></li>
+            </ul>
+
+            <div class="content-title" style="color:var(--asu-red)">
+                Data Simulator
+            </div>
+
+            <ul style="margin-top: 20px;">
+                <li><p>
+                <a href="https://urldefense.com/v3/__https://github.com/MATPOWER/matpower__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCB9-pb1GQ$">Matpower</a>: Steady state power flow simulation and optimizatin for Matlab
+                </p></li>
+
+                <li><p>
+                <a href="https://urldefense.com/v3/__https://sourceforge.net/projects/electricdss/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCAmLG7DOA$">OpenDSS</a>: Distribution system simulator of <a href="https://urldefense.com/v3/__http://smartgrid.epri.com/SimulationTool.aspx__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCBgNeqY_w$">EPRI</a>: Only available for Windows
+                </p></li>
+
+                <li><p>
+                <a href="https://urldefense.com/v3/__https://sourceforge.net/projects/gridlab-d/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCCNkshGdg$">Gridlab-D</a>: <a href="https://urldefense.com/v3/__http://www.gridlabd.org/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCATDy5s9Q$">Homepage</a>: <a href="https://urldefense.com/v3/__http://gridlab-d.sourceforge.net/wiki/index.php?title=Main_Page__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCCnK7XaaA$">Wiki</a>
+                </p></li>
+            </ul>
+
+            <div class="content-title" style="color:var(--asu-red)">
+                Other Data Sets for Cyber Physical Systems
+            </div>
+
+            <ul style="margin-top: 20px;">
+                <li><p>
+                Kaggle: <a href="https://www.kaggle.com/datasets">Link</a>
+                </p></li>
+
+                <li><p>
+                UCI Machine Learning Repository: <a href="https://archive.ics.uci.edu/ml/index.php">Link</a>
+                </p></li>
+
+                <li><p>
+                Google Dataset Search: <a href="https://datasetsearch.research.google.com/">Link</a>
+                </p></li>
+
+                <li><p>
+                Data.Gov: <a href="https://www.data.gov/">Link</a>
+                </p></li>
+
+                <li><p>
+                Datahub.io: <a href="https://datahub.io/">Link</a>
+                </p></li>
+
+                <li><p>
+                AWS Dataset: <a href="https://registry.opendata.aws/">Link</a>
+                </p></li>
+                 
+
+                <li><p>
+                Earth Data: <a href="https://earthdata.nasa.gov/">Link</a>
+                </p></li>
+
+                <li><p>
+                CERN Open Data Portal: <a href="https://opendata.cern.ch/">Link</a>
+                </p></li>
+
+                <li><p>
+                Data.world: <a href="https://data.world/">Link</a>
+                </p></li>
+
+            </ul>
+            
+            <div class="content-title" style="color:var(--asu-red)">
+                Learning Source
+            </div>
+
+            <ul style="margin-top: 20px;">
+                <li><p>
+                How to Write a Scientific Paper? <a href="https://urldefense.com/v3/__https://www.bates.edu/biology/files/2010/06/How-to-Write-Guide-v10-2014.pdf__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCDzfwF0ww$">Link</a>
+                </p></li>
+
+                <li><p>
+                UIUC Power System Lecture Notes: <a href="https://urldefense.com/v3/__https://courses.engr.illinois.edu/ece476/fa2015/Lecture*20Notes/__;JQ!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCAC39GeeQ$">Link</a>
+                </p></li>
+
+                <li><p>
+                VISDOM: Visualization and Insight System for Demand Operations and Management: <a href="https://urldefense.com/v3/__https://github.com/ConvergenceDA/visdom__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCCpQeAc6Q$">Link</a>, require data to let it run
+                <!--(6) https://github.com/yzliao/distribution-grid-data-source-->
+                </p></li>            
+            </ul>
+
+            <br>
+            <div style="font-size: 13px; text-decoration: overline;">
+            <p>Partially Contributed by Gyoungjae(Ted) Kim and <a href="https://urldefense.com/v3/__https://web.stanford.edu/*yzliao/index.html__;fg!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCCaR3hNSA$">Yizheng Liao</a> from <a href="https://urldefense.com/v3/__https://github.com/yzliao/distribution-grid-data-source__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCAS3PBx0w$">Github Repo</a>. </p></li>
+            </div>
+
+        </main>
+
+        
+    </div>
+</body>
+
+<script type="text/javascript">
+    document.getElementById("menu-group").classList.add('current');
+</script>
+
+</html>

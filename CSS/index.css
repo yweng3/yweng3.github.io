@@ -1,0 +1,159 @@
+/* For 2 columns */
+
+.myinfo{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-column-gap: 5px;
+    max-width: 70%;
+}
+
+.myinfo .myphoto{
+    background-image: url(../Image/Photos/Yang.jpg);
+    background-repeat: no-repeat;
+    height:  200px;
+    background-size: cover;
+    border: 3px solid var(--asu-red);
+}
+
+.myinfo .mytitles{
+    /*height:  200px;*/
+    font-size: 17px;
+    margin-left: 30px;
+}
+
+.myinfo p{
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+li{
+    margin-top: -10px;
+}
+
+.content-title{
+    margin-top: 25px;
+    width :100%;
+    font-weight: 700;
+    font-size: 19px;
+}
+
+.content-title::after{
+    content: '';
+    background-color: var(--asu-red);
+    height: 3px;
+    position: absolute;
+    margin-top: 30px;
+    left: 20px;
+    width: 100%;
+}
+
+/*For group members*/
+.personinfo{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 120px 2000px;
+    grid-column-gap: 5px;
+}
+
+.personinfo .personphoto{
+    background-position:center;
+    background-repeat: no-repeat;
+    height:  150px;
+    background-size: cover;
+    border: 3px solid var(--asu-red);
+}
+
+.personinfo .persontitles{
+    /*height:  200px;*/
+    /*font-size: 17px;*/
+    margin-left: 20px;
+}
+
+.personinfo p{
+    margin-top: 0px;
+    margin-bottom: 2px;
+}
+
+/* For hovering on news */
+.newshidden{
+    position: relative;
+    top: 10px;
+    display: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 100%;
+    grid-column-gap: 20px;
+}
+
+.newshidden .newsphoto{
+    background-repeat: no-repeat;
+    height:  200px;
+    background-size: cover;
+    border: 3px solid var(--asu-red);
+}
+
+/*div[class=news]{
+}*/
+
+div[class=news] span:hover{
+    background-position:0 calc(100% - 1.5px);
+    border-bottom:none;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%238C1D40' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: auto 4px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+/*div[class=news]:hover .newshidden{
+    display: grid;
+}*/
+
+
+/* For products, facilities, outreaches */
+.productgrid{
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 5px;
+    width: 1300px;
+}
+
+.productcell{
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    border: 2px solid var(--asu-red);
+}
+
+.producttitle{
+    /*height: 4%;*/
+    text-align: center;
+    font-weight: 700;
+}
+
+.productimage{
+    height: 96%;
+    text-align: center;
+}
+
+.productimage img{
+    width:  100%;
+    height: 100%;
+}
+
+.productvideo{
+    height: 96%;
+    text-align: center;
+}
+
+.productvideo iframe{
+    width:  100%;
+    height: 100%;
+}
+
+
+
+
+

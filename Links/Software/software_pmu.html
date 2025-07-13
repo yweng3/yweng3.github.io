@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Meta Info for Google Search -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Yang Weng">
+    <meta property="og:description" content="Assistant Professor of ECEE at Arizona State University">
+    <meta property="og:image" content="https://www.public.asu.edu/~yweng2/Iamge/Photos/Yang.jpg">
+    <meta property="og:url" content="https://www.public.asu.edu/~yweng2/">
+    <meta name="author" content="Yang Weng">
+
+
+    <title>Software :: Event Detection, Identification, and Localization</title>
+
+    <!--dependencies-->
+    <link rel="stylesheet" href="../../CSS/homepage.css">
+    <link rel="stylesheet" href="../../CSS/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+    integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../../CSS/index.js" type="module"></script>
+</head>
+
+<body>
+
+    <!-- Entire Page -->
+    <div class="row">
+
+        <!-- Top-bar Menu -->
+        <!--#include virtual="../../menu.html" -->
+
+        <!-- Top Big Title -->
+        <div class="bigtitle" id="bigtitle">
+            <div class="thetitle">Machine Learning for Event Detection, Identification, and Localization</div>
+        </div>
+
+        <!-- Image and title -->
+        <main class="row container">
+            <div class="column">
+
+            <p>
+            The power system requires new monitoring and controls due to changes both at the generation side as well as the load side. Synchrophasor technology with synchronized and highresolution measurements provided by Phasor Measurement Units (PMUs) has been recognized as a key contributing technology for advanced situational awareness, including event identification, where the application of machine learning techniques is a hot topic recently.
+            Therefore, we design a software for event detection, identification, and localization with and without labelled data. 
+            This software is being supported and adopted by <a href="https://www.epri.com/">Electric Power Research Institute</a> and PMU Data from <a href="https://www.idahopower.com/">Idaho Power</a>.
+            </p>
+
+            <div class="content-title">
+                Prerequisites and System Requirements
+            </div>
+
+            <p>The software is developed in Python®. Windows 8® or Windows10® 64-bit operating system is required. To run the executable file, the Python 3.5+ environment is necessary. The Windows 64-bit version of the Python 3.5 can be downloaded from the Python Web site by navigating to https://www.python.org/downloads/ </p>
+
+            <div class="content-title">
+                Get Start
+            </div>
+
+            <p>To start the software, the user can directly run the executable file. The main interfaces are shown below. On the left side, the user needs to set all parameters well so that the training/testing/estimation data for Machine Learning methods are prepared. On the right side, SBML provides multiple result presentations based on which method the user chooses. 
+            To illustrate the functionalities of SBML, we go through all modules of SBML and explain technical details for users to understand this software.</p>
+
+            <div class="content-title">
+                Online Learning
+            </div>
+
+            <img style="margin-top: 10px;width:1000px" src="../../Image/Software/SBML-Online.png" alt="Online Learning">
+
+            <p>Description: We first setup OpenPDC</p>
+
+            <img style="margin-top: 10px;" src="../../Image/Software/OpenPDC1.png" alt="Online Learning">
+            <img style="margin-top: 10px;" src="../../Image/Software/OpenPDC2.png" alt="Online Learning">
+
+            <div class="content-title">
+                Online Learning
+            </div>
+
+            <img style="margin-top: 10px;width:1000px" src="../../Image/Software/SBML-Demo17.gif" alt="Online Learning">
+
+            <div class="content-title">
+                Transfer Learning
+            </div>
+
+            <img style="margin-top: 10px;width:1000px" src="../../Image/Software/SBML-Transfer1PC.png" alt="Tranfer Learning">
+
+            <div class="content-title">
+                Offline Learning
+            </div>
+
+            <img style="margin-top: 10px;width:1000px" src="../../Image/Software/SBML-Offline1Time.png" alt="Offline Learning">
+
+            <p>Before starting to train the model, the user first needs to select the machine learning methods in Fig. 1-3. The methods include K-Nearest Neighboring, Decision Tree, Support Vector Machine, Naïve Bayes, Logistic Regression, and Hybrid Method [1]. Specifically, we have the following descriptions:</p>
+            <ul style="margin-left:0">
+              <li><p>K-Nearest Neighboring: K-Nearest Neighboring tries to calculate the distance between every testing sample and every training sample. Then, the K nearest neighbors are counted and they together vote for the label of the testing data.</p></li>
+              <li><p>Decision Tree: Decision Tree is a tree structure whose nodes represent features. When we input testing data, we compare the criteria of branching for each node (feature) and finally obtain a leaf node which is the label for the testing event. </p></li>
+              <li><p>Support Vector Machine: Support Vector Machine tries to find the decision boundary with a maximum margin that is the distance between the decision boundary and the closest points (i.e., the so-called support vectors). </p></li>
+              <li><p>Naïve Bayes: Naive Bayes tries to maximize the posterior of the data by assuming each two of the features are conditionally independent given the label. After we obtain all the probabilities for the features given a label, we can input the new testing data and multiply them together. Finally, we compare each label’s probability given the data and choose the largest one as the correct label. </p></li>
+              <li><p>Logistic Regression: Logistic Regression tries to maximize the conditional likelihood of the label given the appearance of the data. Then, the data is fit into a logistic function to obtain the probability for a given label.  </p></li>
+              <li><p>Hybrid Machine Learning Method: Hybrid Supervised Learning utilizes different classifiers to classify the event with a label output. Then, these classifiers vote for the event and the label with the most votes is attached to the event. </p></li>
+              <li><p>Unsupervised Learning: Clustering methods are utilized in Unsupervised Learning. These methods employ distance measures (e.g., Euclidean distance) to evaluate the distance between different points in high dimensional spaces. Then, their relationship and belonging are categorized by grouping them by distance. </p></li>
+            </ul>
+
+            <div class="content-title">
+                Input Files
+            </div>
+
+            <p>With the selected method, we can load the event files via the “Load” button. Further, we prepare the loaded data for the following training/testing process by normalization and alignment of multiple event files. We click the “Preprocess” button to achieve this function.</p>
+
+            <p>The input data format is described in the appendix. We have the following columns:</p>
+            <ul style="margin-left:0">
+              <li><p>Nodal voltage magnitude, angle, and frequency.</p></li>
+              <li><p>Branch current magnitude and angle.</p></li>
+              <li><p>Event type, location, and label.</p></li>
+            </ul>
+            <p>It's especially noted that the event label is determined by both the event type and location. Namely, each unique combination of event type and location will give a unique event label. In our 100 sample event files, we have the following event type, location, and label information. The rest 80 event files keep repeating the first 20 files with the ordered event type and location under different loading conditions. </p>
+            
+            <div class="content-title">
+                Title
+            </div>
+
+            <img style="margin-top: 10px;width:1000px" src="../../Image/Software/SBML-Offline2Loc.png" alt="Learning result">
+
+            <div class="content-title">
+                Title
+            </div>
+
+            <img style="margin-top: 10px;width:1000px" src="../../Image/Software/SBML-Offline3Res.png" alt="Learning result">
+
+            <div class="content-title">
+                Title
+            </div>
+
+            <img style="margin-top: 10px;width:1000px" src="../../Image/Software/SBML-Offline4Map.png" alt="Learning result">
+
+            <div class="content-title">
+                Title
+            </div>
+
+            <img style="margin-top: 10px;width:1000px" src="../../Image/Software/SBML-Offline5-3D.png" alt="Learning result">
+
+            <div class="content-title">
+                Title
+            </div>
+
+            <img style="margin-top: 10px;width:1000px" src="../../Image/Software/SBML-Offline6Tree.png" alt="Learning result">
+
+            <div class="content-title">
+                Title
+            </div>
+
+            <img style="margin-top: 10px;width:1000px" src="../../Image/Software/SBML-Offline7Penetration.png" alt="Learning result">
+
+            <div class="content-title">
+                Title
+            </div>
+
+            <img style="margin-top: 10px;width:1000px" src="../../Image/Software/SBML-Offline8Tree.png" alt="Learning result">
+
+        </main>
+
+        
+    </div>
+</body>
+
+<script type="text/javascript">
+    document.getElementById("menu-group").classList.add('current');
+</script>
+
+</html>

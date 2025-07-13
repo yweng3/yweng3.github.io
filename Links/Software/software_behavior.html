@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Meta Info for Google Search -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Yang Weng">
+    <meta property="og:description" content="Assistant Professor of ECEE at Arizona State University">
+    <meta property="og:image" content="https://www.public.asu.edu/~yweng2/Iamge/Photos/Yang.jpg">
+    <meta property="og:url" content="https://www.public.asu.edu/~yweng2/">
+    <meta name="author" content="Yang Weng">
+
+
+    <title>Software :: Smart Meter Monitoring</title>
+
+    <!--dependencies-->
+    <link rel="stylesheet" href="../../CSS/homepage.css">
+    <link rel="stylesheet" href="../../CSS/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+    integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../../CSS/index.js" type="module"></script>
+</head>
+
+<body>
+
+    <!-- Entire Page -->
+    <div class="row">
+
+        <!-- Top-bar Menu -->
+        <!--#include virtual="../../menu.html" -->
+
+        <!-- Top Big Title -->
+        <div class="bigtitle" id="bigtitle">
+            <div class="thetitle">Big Data Analytics Software for Smart Meter Monitoring and Situational Awareness</div>
+        </div>
+
+        <!-- Image and title -->
+        <main class="row container">
+            <div class="column">
+
+            <p>
+              As the fact that utilities are suffering from a lot of smart meter data issues being revealed through the previous project, we determined that it is meaningful to design a big data software to monitor smart meter data and gain awareness of special situations. The primary objective of this project is to develop a software to visualize the smart meter data, provide indicators to mismatch records, meter communication issues, special or suspect events, and conduct machine learning, such as clustering and forecasting, on smart meter data. Other capabilities include using various types of machine learning methods for data analysis, such as user behavior analysis, AC failing prediction (possibly), and identification of the level of residential EV charging point (possibly). Therefore, this project aims at building a user-friendly interface to aid SRP to quickly locate meters of interest, identify the special events occurring on these meters and manage the meter data correctly and efficiently. Specifically, the following functions and features are achieved or to be achieved in the software:.
+            </p>
+
+            <div class="content-title">
+                Installation
+            </div>
+
+            <p>If you would like to modify the code, please check the python library dependency below with the right version.
+            A universal installation method (that works on Windows, Mac OS X, Linux, ..., and always provides the latest version)
+            is to use pip:</p>
+
+            <code>
+            $ python -m pip install --upgrade pip setuptools <br>
+            $ python -m pip install --upgrade dash (preferably, version >= 1.21.0)<br>
+            $ python -m pip install --upgrade dash-bootstrap-components (preferably, version >= 0.12.2) $ python -m pip install --upgrade dash_auth (preferably, version >= 1.4.1)<br>
+            $ python -m pip install --upgrade kaleido(preferably, version >= 0.2.1)<br>
+            $ python -m pip install --upgrade pandas (preferably, version >= 1.3.1)<br>
+            $ python -m pip install --upgrade numpy (preferably, version >= 1.21.1)<br>
+            $ python -m pip install --upgrade plotly (preferably, version >= 5.1.0)<br>
+            $ python -m pip install --upgrade sklearn (preferably, version >= 0.0)<br>
+            $ python -m pip install --upgrade fpdf (preferably, version >= 1.7.2)<br>
+            $ python -m pip install --upgrade docx (preferably, version >= 0.2.4)<br>
+            *Python version 3.7 or greater is required.
+            </code>
+
+            <div class="content-title">
+                Getting Started
+            </div>
+
+            <p>The software is developed to visualize various sources of information, give indications to mismatch records, meter communication issues, special or suspect events, and conduct machine learning, such as clustering and forecasting, on smart meter data. These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.</p>
+
+            <div class="content-title">
+                Uploading Files
+            </div>
+            
+            <img style="margin-top: 10px;width:800px;" src="../../Image/Software/DC1_uploading_file_layout.PNG" alt="Data uploading page">
+            
+            <p>Description: In this tab, you can drag, drop or select a file with .csv format which contains the following keys: 'LOCATN_K', 'APCODE', 'METER', 'CHNM', and 'DATE'. The tab provides the file name, important information in the file, and the file contents for you to check if this is the correct file you plan to analyze.</p>
+
+            <p>An example of the output information is given below.</p>
+
+            <img style="margin-top: 10px;width:800px;" src="../../Image/Software/DC2_uploading_file_output1.PNG" alt="Data output example">
+            
+            <div class="content-title">
+                Data Visualizations
+            </div>
+
+            <img style="margin-top: 10px;width:800px;" src="../../Image/Software/DC3_data_visu_layout.PNG" alt="Data Visualizations">
+            
+            <p>Description: In this tab, you can visualize the uploaded time series data by changing the location number, smart meter code, and smart meter measurement type.</p>
+
+            <p>An example of the output time series visualization is given below.</p>
+
+            <img style="margin-top: 10px;width:800px;" src="../../Image/Software/DC4_data_visu_output1.PNG" alt="Data Visualizations">
+
+            <div class="content-title">
+               Distribution Visualizations
+            </div>
+
+            <img style="margin-top: 10px;width:800px;" src="../../Image/Software/DC5_distr_visu_layout.PNG" alt="Distribution Visualizations">
+            
+            <p>Description: In this tab, you can check the distribution of a certain smart meter measurement by selecting the type of the measurement you would like to analyze. Ten statistical measurements are calculated to help you to understand the data better. The histogram and the boxplot are generated to provide distribution visualizations for the selected property.</p>
+
+            <p>An example of the output is given below.</p>
+
+            <img style="margin-top: 10px;width:800px;" src="../../Image/Software/DC6_distr_visu_output1.PNG" alt="Distribution Visualizations">
+
+            <div class="content-title">
+               Bad Data Indicator
+            </div>
+
+            <img style="margin-top: 10px;width:800px;" src="../../Image/Software/DC7_bad_data_layout1.PNG" alt="Bad data indicator">
+            
+            <p>Description: In the first section, the software will automatically pull out some inconsistent information of the battery configuration from the database.</p>
+
+            <p>In the second section, the software will automatically pull out some duplicated battery meter records from the uploaded file.</p>
+
+            <img style="margin-top: 10px;width:800px;" src="../../Image/Software/DC8_bad_data_layout2.PNG" alt="Bad data indicator">
+
+            <p>Description: In the third section, the software calculates the threshold of the voltage regulation according to the user entered value. The software filters out any data series that violate the threshold at least once. The threshold is calculated as follows: [ max(the mean value of the voltage - user entered value, 0), the mean value of the voltage + user entered value] (V). Two statistical information of the violations and a visualization of the violating time series data will be provided.</p>
+
+            <img style="margin-top: 10px;width:800px;" src="../../Image/Software/DC9_bad_data_layout3.PNG" alt="Bad data indicator">
+
+            <p>Description: In the fourth section, the software filters out any data series that never exceed the threshold entered by the user. Two statistical information of the violations and a visualization of the violating time series data are provided.</p>
+
+            <div class="content-title">
+               Behavior Analysis
+            </div>
+
+            <img style="margin-top: 10px;width:800px;" src="../../Image/Software/DC10_behav_layout.PNG" alt="behavior analysis">
+
+            <p>Description: In this tab, the user can adjust the four variables such as the meter type, configuration, rate plan and season to see the behavior patterns in the time-series graph. Three most typical behavior patterns will be visualized. And the abnormal customers in each behavior pattern is output for visualization if there is sufficient data.</p>
+            <p>An example of the output is given below.</p>
+
+            <img style="margin-top: 10px;width:800px;" src="../../Image/Software/DC11_behav_output.PNG" alt="behavior analysis">
+
+            <div class="content-title">
+               Contributor and Contact Information
+            </div>
+
+            <p>Shuman Luo: sluo31@asu.edu, Ted Kim</p>
+            
+        </main>
+
+        
+    </div>
+</body>
+
+<script type="text/javascript">
+    document.getElementById("menu-group").classList.add('current');
+</script>
+
+</html>

@@ -1,0 +1,58 @@
+.hiddenImage{
+    display: grid;
+    position: absolute;
+    left: 1050px;
+    margin-top: calc(-100px);
+
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    opacity: 0; 
+    visibility: hidden; 
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.hiddenImage .rowImage{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.hiddenImage .columnImage{
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    gap: 1rem;
+}
+
+.hiddenImage img[class=row]{
+    border: 1px solid var(--asu-red);
+    width: 340px;
+    height: 217px;
+}
+
+.hiddenImage img[class=column]{
+    border: 1px solid var(--asu-red);
+    width: 340px;
+    height: 452px;
+    padding: 0;
+}
+
+.hiddenImage img[class=big]{
+    border: 1px solid var(--asu-red);
+    width: 680px;
+    height: 434px;
+/*    padding: 0;*/
+}
+
+tr[class=hoverable]{
+    background-color: rgba(255, 198, 39, 0.1);
+}
+
+tr[class=hoverable]:hover{
+    background-color: var(--asu-yellow);
+}
+
+tr[class=hoverable]:hover .hiddenImage{
+    opacity: 1;
+    visibility: visible; 
+}

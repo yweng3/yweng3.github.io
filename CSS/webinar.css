@@ -1,0 +1,180 @@
+:root{
+    --color0: #4BC2E3;
+    --color0_dark: #fafafa;
+    --color1: #FEFBF4;
+    --color2: #ffc627;
+    --color3: #819D93;
+}
+
+.container{
+    margin-top: 140px;
+}
+
+.column{
+  flex: 1;
+  padding: 0px;
+}
+
+.web{
+    /*background-color: var(--color1);*/
+    min-height: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* For speaker photos */
+.web .speaker{
+    height: 50%;
+    margin-right: 30px;
+    display: grid;
+    grid-template-columns: 180px 180px 180px;
+    grid-column-gap: 5px;
+    grid-auto-flow: dense;
+    direction: rtl;
+}
+
+.web .speaker .speaker-content{
+    height:  220px;
+    border: 3px solid var(--asu-red);
+    display:block;
+    align-items:center;
+    justify-content:center;
+}
+
+.speaker-photo{
+    width: 100%; height: 100%; 
+    background-size: cover; background-repeat: no-repeat;
+}
+
+.speaker-name{
+    padding-top: 5px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.speaker-school{
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+}
+
+.web .content{
+    /*height: 150px;*/
+    width: 50%;
+    height: 52%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    /*background-color: red;*/
+}
+
+.web-info{
+    display: inline-block;
+}
+
+.web-info b{
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+.web-info i{
+    padding-left: 28px;
+    padding-right: 8px;
+    font-size: 21px;
+}
+
+.web-info span{
+    font-size: 18px;
+    padding-right: 10px;
+    font-weight: 700;
+}
+
+.content h2{
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.content .flyer{
+    border: 2px solid var(--asu-red);
+    border-radius: 4px;
+    padding: 8px 16px 8px 16px;
+    min-width: 36px;
+}
+
+.content a{
+    color: black;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.content a:hover{
+    background-color: var(--asu-red);
+}
+
+
+/* For individual html page */
+.web-individual .web{
+    width: auto;
+    display: block;
+    min-height: 300px;
+}
+.web-individual .web .speaker{
+    grid-template-columns: 180px 180px 180px 180px;
+    direction: ltr;
+}
+
+.web-individual .web .speaker :last-child[class=speaker-content]{
+    width: 700px;
+    margin-left: 50px;
+    border: none;
+}
+
+.web-individual{
+    margin-top:20px;
+    margin-left: 50px;
+    float: left;
+}
+
+.web-individual .talktitle{
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--asu-red);
+    margin-bottom: 20px;
+}
+
+.bios {
+    width: 1300px;
+}
+.bios b{
+    display: inline-block;
+    font-size: 18px;
+    background-color: var(--asu-yellow);
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 4px;
+}
+.bios p{
+    margin-top: -2px;
+}
+
+.materials{
+    display: grid;
+    grid-template-columns: 700px 700px;
+    grid-column-gap: 50px;
+}
+
+a[class=flyer]{
+    border: 2px solid var(--asu-red);
+    border-radius: 4px;
+    padding: 2px 4px 2px 4px;
+}
+
+a[class=flyer]:hover{
+    background-color: rgba(240, 69, 40, 0.3);
+    border-bottom: none;
+}

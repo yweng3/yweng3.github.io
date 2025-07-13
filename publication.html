@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Meta Info for Google Search -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Yang Weng">
+    <meta property="og:description" content="Assistant Professor of ECEE at Arizona State University">
+    <meta property="og:image" content="https://www.public.asu.edu/~yweng2/Iamge/Photos/Yang.jpg">
+    <meta property="og:url" content="https://www.public.asu.edu/~yweng2/">
+    <meta name="author" content="Yang Weng">
+
+
+    <title>Publication</title>
+
+    <!--dependencies-->
+    <link rel="stylesheet" href="CSS/homepage.css">
+    <link rel="stylesheet" href="CSS/publication.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+    integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="CSS/publication.js" type="module"></script>
+    <script src="CSS/index.js" type="module"></script>
+</head>
+
+<body>
+
+    <!-- Entire Page -->
+    <div class="row">
+
+        <!-- Top-bar Menu -->
+        <!--#include file="menu.html" -->
+
+        <!-- Top Big Title -->
+        <div class="bigtitle" id="bigtitle">
+            <div class="thetitle">Publications</div>
+        </div>
+
+        <!-- Publications -->
+        <main class="row container">
+            <div class="column">
+
+            <div class="search">
+                <input type="text" name='publication' placeholder="Search Publications..." aria-label="search publications">
+                <!-- <div style="position: absolute; left:720px;"><img width=200; height=400; src="https://drive.google.com/uc?export=view&id=1eW4zhU7qbtalSykzLWThVk8VLX62gFv3"></div> -->
+            </div>
+
+            
+
+            <div class="filter">
+                <div class="switch-container">
+                    <label id="by-time-switch" class="switch" role="button" aria-label="Filter by Time" aria-pressed="false">
+                        <input id="by-time" class="checkbox" type="checkbox" />
+                        <span class="slider"></span>
+                    </label>
+                    <span class="label" aria-hidden="true" id="sort_label">By Category</span>
+                </div>
+                
+                <div class="chip selected" data-cond="pub-all" role="button" aria-label="Filter Publications by All">All</div>
+                <div class="chip" data-cond="pub-book" role="button" aria-label="Filter Publications by Book">Book</div>
+                <div class="chip" data-cond="pub-journal" role="button" aria-label="Filter Publications by Journal">Journal</div>
+                <div class="chip" data-cond="pub-conference" role="button" aria-label="Filter Publications by Conference">Conference</div>
+                <div class="chip" data-cond="pub-patent" role="button" aria-label="Filter Publications by Patent">Patent</div>
+                <div class="chip" data-cond="pub-awards" role="button" aria-label="Filter Publications by Awards">Best Papers</div>                
+            </div>
+
+            <div style="margin-top:-25px" class="filter">
+                <div style="padding-right:10px" class="switch-container">
+                    Areas:
+                </div>
+                <div class="chip" data-cond="pub-stateEst" role="button" aria-label="Filter Publications by state estimation">State estimation</div>
+                <div class="chip" data-cond="pub-cyber" role="button" aria-label="Filter Publications by cybersecurity">Security and resilience</div>
+                <div class="chip" data-cond="pub-topIden" role="button" aria-label="Filter Publications by topology identification">Topology identification</div>
+                <div class="chip" data-cond="pub-renew" role="button" aria-label="Filter Publications by renewable">Renewable energy intergration</div>
+                <div class="chip" data-cond="pub-control" role="button" aria-label="Filter Publications by control">Smart grid control</div>
+                <div class="chip" data-cond="pub-detection" role="button" aria-label="Filter Publications by fault detection">Fault detection</div>
+                <div class="chip" data-cond="pub-ev" role="button" aria-label="Filter Publications by electric vehicles">Electric vehicles</div>
+                <div class="chip" data-cond="pub-others" role="button" aria-label="Filter Publications by others">Others</div>
+            </div>
+
+            <div class="pubs">
+                <!-- placeholder -->
+            </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+<script type="text/javascript">
+    function copy2board(x){
+        x.textContent = "Copied";
+        const textArea = document.createElement("textarea");
+        textArea.value = x.parentElement.nextElementSibling.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+    }
+    
+    function toggleDiv(div){
+        let computedStyle = window.getComputedStyle(div);
+        if (computedStyle.display === "none")
+            div.style.display = "block";
+        else
+            div.style.display = "none";
+    }
+
+    document.getElementById("menu-publication").classList.add('current');
+</script>
+
+</html>
