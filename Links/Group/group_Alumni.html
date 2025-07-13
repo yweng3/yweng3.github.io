@@ -31,7 +31,14 @@
     <div class="row">
 
         <!-- Top-bar Menu -->
-        <!--#include virtual="../../menu.html" -->
+        <div id="menu-placeholder"></div>
+        <script>
+          fetch('../../menu.html')
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById('menu-placeholder').innerHTML = data;
+            });
+        </script>
 
         <!-- Top Big Title -->
         <div class="bigtitle" id="bigtitle">
