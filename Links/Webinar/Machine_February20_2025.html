@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Meta Info for Google Search -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Yang Weng">
+    <meta property="og:description" content="Associate Professor of ECEE at Arizona State University">
+    <meta property="og:image" content="https://yweng3.github.io/Image/Photos/Yang.jpg">
+    <meta property="og:url" content="https://yweng3.github.io">
+    <meta name="author" content="Yang Weng">
+
+    <title>Webinar</title>
+
+    <!--dependencies-->
+    <link rel="stylesheet" href="../../CSS/homepage.css">
+    <link rel="stylesheet" href="../../CSS/webinar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"    integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../../CSS/index.js" type="module"></script>
+    <style type="text/css">
+        a{color:black;}
+    </style>
+</head>
+
+<body>
+
+    <!-- Entire Page -->
+    <div class="row">
+
+        <!-- Top-bar Menu -->
+            <div id="menu-placeholder"></div>
+            <script>
+            fetch('../../menu.html')
+                .then(response => response.text())
+                .then(data => {
+                document.getElementById('menu-placeholder').innerHTML = data;
+                });
+            </script>
+        <!-- Top Big Title -->
+        <div class="bigtitle" id="bigtitle">
+            <div class="thetitle">Webinar</div>
+        </div>
+
+        <!-- Webinars -->
+        <main class="container">
+            <div class="column">
+
+            <div class="web-individual">
+                <div class="web">
+                    <div class="speaker">
+                    <div class="speaker-content">
+                        <div class="speaker-photo" style="background-image:url(../../Image/Webinar/1LT9Qb_Phswy-fu6EuHiLFqKbhfv6NrcG.png);"></div>
+                        <div class="speaker-name">Hongyu Wu</div>
+                        <div class="speaker-school">Kansas State University</div>
+                    </div>
+                    <div class="speaker-content">
+                    <div class="talktitle">Machine Learning for Power System Cybersecurity: Detecting and Defending Against Stealthy False Data Injection Attacks</div>
+                        <p><b>Date</b>:&nbsp;&nbsp;February 20, 2025</p>
+                        <p><b>Speaker</b>:&nbsp;&nbsp;<a href="https://ece.k-state.edu/about/people/faculty/wu/">Hongyu's website &nbsp;&nbsp;</a></p>
+                        <p><b>Contact</b>:&nbsp;&nbsp;hongyuwu@ksu.edu</p>
+                        <p><b>Material</b>:&nbsp;&nbsp;<a class="flyer" href="https://drive.google.com/uc?export=view&id=1p8VY80IvvvnqJPzONiYSSjluqc94v7h_"><span>Flyer</span></a>&nbsp;&nbsp;
+                   </div>
+                </div>
+                </div>
+                <br>
+                <br>
+                <div class="bios">
+                    <b>Bios</b>
+                    <p>Dr. Hongyu Wu is a Lucas-Rathbone Professor and University Outstanding Scholar in the Department of Electrical and Computer Engineering at Kansas State University. His research focuses on cybersecurity, AI-driven analytics for power systems, and grid resilience. He is an NSF CAREER Awardee and has led multiple NSF-, DOE-, and DoD-funded projects. Dr. Wu serves as an Associate Editor for IEEE Transactions on Smart Grid and IEEE Transactions on Industrial Informatics.
+                    </p>
+                </div>
+                <div class="bios">
+                    <b>Abstract</b>
+                    <p>As machine learning (ML) becomes a critical tool in power system operations, adversaries are developing advanced attack strategies to evade ML-based anomaly detection. This tutorial explores both ML-driven defenses and stealthy attack techniques, with a focus on false data injection (FDI) attacks that manipulate power system state estimation. Key topics include: 1. Machine Learning for Cybersecurity in Power Systems – How ML-based anomaly detection methods identify cyberattacks and their limitations against adversarial threats. 2. Low-Rank and Tensor-Completion-Based Stealthy FDI Attacks – How attackers can use low-rank approximation and tensor completion to modify measurements while preserving statistical consistency, making them difficult for ML models to detect. 3. Defense Strategies: Machine Learning and Moving Target Defense – Techniques such as reactance perturbation strategies (RPS) and adaptive ML models that actively counter stealthy cyberattacks. By bridging big data analytics, cybersecurity, and power system operation, this tutorial will provide insights into AI-driven attack detection, vulnerabilities in existing defenses, and emerging trends in cybersecurity for the smart grid.
+                    </p>
+                </div>
+                <div class="materials">
+                <div class="bios">
+                    <b>Video</b><br>
+                    <iframe width="700" height="540" src="https://www.youtube.com/embed/WKlf9GYLvaM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                </div>
+                    </div>
+            </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+<script type="text/javascript">
+    document.getElementById("menu-webinar").classList.add('current');
+</script>
+
+</html>
