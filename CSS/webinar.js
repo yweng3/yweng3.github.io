@@ -75,7 +75,7 @@ function renderWebinars(webs){
         }
 
         if(d.flyer) html = html + `<a href='${d.flyer}' target='_blank' class="flyer"><span>Flyer</span></a>`;
-        if(d.slides) html = html + `<a href='${d.slides}' target='_blank' class="flyer"><span>Slides</span></a>`;
+        if(!d.slides.localeCompare(";")) html = html + `<a href='${d.slides}' target='_blank' class="flyer"><span>Slides</span></a>`;
         if(d.video){
             if(d.video.includes("resourcecenter.ieee-pes.org"))
                 html = html + `<a href='${d.video.split(";")[0]}' target='_blank' class="flyer"><span>Video</span></a>`;
