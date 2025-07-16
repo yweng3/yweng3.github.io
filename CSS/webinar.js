@@ -82,6 +82,7 @@ function renderWebinars(webs){
             else
                 html = html + `<a href='${d.video}' target='_blank' class="flyer"><span>Video</span></a>`;
         }
+        // mark
         if (d.upcoming.localeCompare("1")){
             html = html + `<a href='Links/Webinar/${htmlname}.html' target='_blank' class="flyer"><span>Talk Page</span></a>`;
         }
