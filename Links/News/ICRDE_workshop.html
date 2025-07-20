@@ -31,7 +31,14 @@
     <div class="row">
 
         <!-- Top-bar Menu -->
-        <!--#include file="menu.html" -->
+        <div id="menu-placeholder"></div>
+        <script>
+          fetch('../../menu.html')
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById('menu-placeholder').innerHTML = data;
+            });
+        </script>
 
         <!-- Image and title -->
         <main class="row container">
@@ -43,7 +50,7 @@
                                             <div class="et_post_meta_wrapper">
                             <h1 class="entry-title">ASU leads U.S.-Israel energy cybersecurity workshop</h1>
 
-                        <p class="post-meta"> by <span class="author vcard"><a href="https://ecee.engineering.asu.edu/author/tjtriolo/" title="Posts by TJ Triolo" rel="author">TJ Triolo</a></span> | <span class="published">Nov 2, 2023</span> | <a href="https://ecee.engineering.asu.edu/category/news/" rel="category tag">News</a></p><img src="https://ecee.engineering.asu.edu/wp-content/uploads/sites/29/2023/11/groupPicshorter-1920x1080-1-1080x675.jpg" alt="A photo showing the group of participants in the ICRDE workshop conference" class="" width="1080" height="675" srcset="https://ecee.engineering.asu.edu/wp-content/uploads/sites/29/2023/11/groupPicshorter-1920x1080-1-980x551.jpg 980w, https://ecee.engineering.asu.edu/wp-content/uploads/sites/29/2023/11/groupPicshorter-1920x1080-1-480x270.jpg 480w" sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) and (max-width: 980px) 980px, (min-width: 981px) 1080px, 100vw">
+                        <p class="post-meta"> By <span class="author vcard"><a href="https://ecee.engineering.asu.edu/author/tjtriolo/" title="Posts by TJ Triolo" rel="author">TJ Triolo</a></span> | <span class="published">Nov 2, 2023</span> | <a href="https://ecee.engineering.asu.edu/category/news/" rel="category tag">News</a></p>
                                                 </div>
                 
                     <div class="entry-content">
