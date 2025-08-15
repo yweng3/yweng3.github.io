@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yweng3.github.io/sitemap.xml
