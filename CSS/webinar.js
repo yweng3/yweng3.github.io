@@ -42,7 +42,8 @@ function renderWebinars(webs){
     
     webs.forEach(d=>{
         let html = "";
-        if (d.upcoming.localeCompare("0")){
+        // if (d.upcoming.localeCompare("0")){
+        if (d.upcoming == "1"){
             html = html + `\n<div style="position: absolute; margin-left:40px; margin-top:20px;">
                         <h2 style="padding: 1rem; box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.2); background-color: var(--color0_dark);border-radius:20px;">Upcoming</h2>
                     </div>\n`
@@ -65,7 +66,8 @@ function renderWebinars(webs){
                         <div class='web-info'>
                             <b>${d.type}</b> <i class="far fa-clock"></i> <span>${d.time}</span>
                         </div>`
-        if (d.upcoming.localeCompare("1")){
+        // if (d.upcoming.localeCompare("1")){
+        if (d.upcoming == "0"){
             html = html + `<h2><a style="color:black;" target='_blank' href="Links/Webinar/${htmlname}.html">${d.title}</a></h2>
                         <p>${d.abstract}</p>`
         }
@@ -83,8 +85,10 @@ function renderWebinars(webs){
                 html = html + `<a href='${d.video}' target='_blank' class="flyer"><span>Video</span></a>`;
         }
         // mark
-        if (d.upcoming.localeCompare("1")){
+        // if (d.upcoming.localeCompare("1")){
+        if (d.upcoming == "0"){
             html = html + `<a href='Links/Webinar/${htmlname}.html' target='_blank' class="flyer"><span>Talk Page</span></a>`;
+        }
         }
         html = html + `</div></div>`;
 
