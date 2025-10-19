@@ -89,7 +89,6 @@ function renderWebinars(webs){
         if (d.upcoming == "0"){
             html = html + `<a href='Links/Webinar/${htmlname}.html' target='_blank' class="flyer"><span>Talk Page</span></a>`;
         }
-        }
         html = html + `</div></div>`;
 
         let elem = document.createElement('div');
