@@ -2,16 +2,17 @@
 
 .myinfo{
     display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-column-gap: 5px;
-    max-width: 70%;
+    grid-template-columns: 150px 1fr;
+    gap: 12px;
 }
 
 .myinfo .myphoto{
     background-image: url(../Image/Photos/Yang.jpg);
     background-repeat: no-repeat;
     height:  200px;
+/*    width: 200px;*/
     background-size: cover;
+    background-position: center;
     border: 3px solid var(--asu-red);
 }
 
@@ -74,27 +75,31 @@ li{
     margin-bottom: 2px;
 }
 
-/* For hovering on news */
+.news{
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 0px;
+    margin-left: 0;
+    margin-top: 15px;
+}
+
 .newshidden{
-    position: relative;
-    top: 10px;
-    display: none;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    max-width: 100%;
-    grid-column-gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin: 10px auto 0;
 }
 
 .newshidden .newsphoto{
     background-repeat: no-repeat;
     height:  200px;
     background-size: cover;
+    background-position: center; 
     border: 3px solid var(--asu-red);
 }
 
-/*div[class=news]{
-}*/
-
+/* For hovering on news */
 div[class=news] span:hover{
     background-position:0 calc(100% - 1.5px);
     border-bottom:none;
