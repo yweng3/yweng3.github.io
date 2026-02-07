@@ -10,14 +10,12 @@
     background-image: url(../Image/Photos/Yang.jpg);
     background-repeat: no-repeat;
     height:  200px;
-/*    width: 200px;*/
     background-size: cover;
     background-position: center;
     border: 3px solid var(--asu-red);
 }
 
 .myinfo .mytitles{
-    /*height:  200px;*/
     font-size: 17px;
     margin-left: 30px;
 }
@@ -113,6 +111,7 @@ div[class=news] span:hover{
 /*div[class=news]:hover .newshidden{
     display: grid;
 }*/
+
 
 
 /* For products, facilities, outreaches */
