@@ -77,6 +77,17 @@
 
             <p>This is the official GitHub Pages site of Prof. Yang Weng (ASU).</p>
 
+            <div id="latest-x"></div>
+
+            <script>
+              fetch("assets/latest-x.html", { cache: "no-store" })
+                .then(r => r.text())
+                .then(t => { document.getElementById("latest-x").innerHTML = t; })
+                .catch(() => {
+                  document.getElementById("latest-x").innerHTML =
+                    '<div>Latest X post unavailable. <a href="https://twitter.com/xiaopi41955739" target="_blank" rel="noopener">View on X</a></div>';
+                });
+            </script>
 
             <div class="content-title">
                 Research Interests
