@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-            - name: Fetch latest post and write assets/latest-x.html
+      - name: Fetch latest post and write assets/latest-x.html
         run: |
           python3 - << 'PY'
           import html, re, urllib.request
