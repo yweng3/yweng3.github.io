@@ -3,7 +3,7 @@ name: Update latest X post
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 * * * *"   # every hour at :17 (UTC)
+    - cron: "17 * * * *"  # hourly (UTC)
 
 permissions:
   contents: write
@@ -14,72 +14,58 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch latest post and write assets/latest-x.html
+      - name: Fetch latest X post via API and write assets/latest-x.html
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          X_USERNAME: ${{ secrets.X_USERNAME }}
         run: |
           python3 - << 'PY'
-          import html, re, urllib.request
-          from xml.etree import ElementTree as ET
+          import os, json, html, urllib.request, urllib.parse
 
-          USER = "xiaopi41955739"
+          bearer = (os.environ.get("X_BEARER_TOKEN") or "").strip()
+          username = (os.environ.get("X_USERNAME") or "yweng30").strip()
+          if not bearer:
+            raise SystemExit("Missing GitHub secret: X_BEARER_TOKEN")
 
-          rss_candidates = [
-            f"https://twitrss.me/twitter_user_to_rss/?user={USER}",
-            f"https://nitter.net/{USER}/rss",
-            f"https://nitter.it/{USER}/rss",
-            f"https://nitter.poast.org/{USER}/rss",
-          ]
+          def api_get(url):
+            req = urllib.request.Request(url)
+            req.add_header("Authorization", f"Bearer {bearer}")
+            req.add_header("User-Agent", "latest-x-post-github-action/1.0")
+            with urllib.request.urlopen(req, timeout=20) as r:
+              return json.loads(r.read().decode("utf-8"))
 
-          xml = None
-          last_err = None
+          # username -> user id
+          u = api_get(f"https://api.x.com/2/users/by/username/{urllib.parse.quote(username)}")
+          user_id = u["data"]["id"]
 
-          for url in rss_candidates:
-            try:
-              req = urllib.request.Request(
-                url,
-                headers={
-                  "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
-                },
-              )
-              with urllib.request.urlopen(req, timeout=20) as r:
-                xml = r.read()
-              print(f"Fetched RSS from: {url}")
-              break
-            except Exception as e:
-              last_err = e
-              print(f"Failed RSS source {url}: {e}")
+          # latest original post (exclude replies/retweets)
+          t = api_get(
+            f"https://api.x.com/2/users/{user_id}/tweets"
+            f"?max_results=5&exclude=retweets,replies&tweet.fields=created_at"
+          )
+          if "data" not in t or not t["data"]:
+            raise SystemExit("No original posts found (maybe only replies/retweets).")
 
-          if xml is None:
-            raise SystemExit(f"All RSS sources failed. Last error: {last_err}")
-
-          root = ET.fromstring(xml)
-          item = root.find("./channel/item")
-          if item is None:
-            raise SystemExit("No items found in RSS feed.")
-
-          title = (item.findtext("title") or "").strip()
-          link  = (item.findtext("link") or "").strip()
-          pub   = (item.findtext("pubDate") or "").strip()
-
-          title = re.sub(rf"^{re.escape(USER)}\s*:\s*", "", title, flags=re.I).strip()
-
-          def esc(s): return html.escape(s)
+          latest = t["data"][0]
+          post_id = latest["id"]
+          text = (latest.get("text") or "").strip()
+          created_at = latest.get("created_at") or ""
+          link = f"https://twitter.com/{username}/status/{post_id}"
 
           out = f"""
           <div class="latest-x-card">
             <div class="latest-x-header">
               <span class="latest-x-label">Latest on X</span>
-              <a class="latest-x-link" href="{esc(link)}" target="_blank" rel="noopener">Open</a>
+              <a class="latest-x-link" href="{html.escape(link)}" target="_blank" rel="noopener">Open</a>
             </div>
-            <div class="latest-x-text">{esc(title)}</div>
-            <div class="latest-x-date">{esc(pub)}</div>
+            <div class="latest-x-text">{html.escape(text)}</div>
+            <div class="latest-x-date">{html.escape(created_at)}</div>
           </div>
           """.strip()
 
-          import os
           os.makedirs("assets", exist_ok=True)
           with open("assets/latest-x.html", "w", encoding="utf-8") as f:
             f.write(out)
-
           print("Wrote assets/latest-x.html")
           PY
 
