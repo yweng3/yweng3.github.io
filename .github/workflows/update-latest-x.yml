@@ -1,0 +1,69 @@
+name: Update latest X post
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # every hour at :17 (UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch latest post and write assets/latest-x.html
+        run: |
+          python3 - << 'PY'
+          import html, re, urllib.request
+          from xml.etree import ElementTree as ET
+
+          USER = "IEEESpectrum"
+          RSS_URL = f"https://twitrss.me/twitter_user_to_rss/?user={USER}"
+
+          # Fetch RSS
+          with urllib.request.urlopen(RSS_URL, timeout=30) as r:
+            xml = r.read()
+
+          root = ET.fromstring(xml)
+          item = root.find("./channel/item")
+          if item is None:
+            raise SystemExit("No items found in RSS feed.")
+
+          title = (item.findtext("title") or "").strip()
+          link  = (item.findtext("link") or "").strip()
+          pub   = (item.findtext("pubDate") or "").strip()
+
+          # twitrss title often looks like "username: tweet text"
+          title = re.sub(rf"^{re.escape(USER)}\s*:\s*", "", title, flags=re.I).strip()
+
+          def esc(s): return html.escape(s)
+
+          out = f"""
+          <div class="latest-x-card">
+            <div class="latest-x-header">
+              <span class="latest-x-label">Latest on X</span>
+              <a class="latest-x-link" href="{esc(link)}" target="_blank" rel="noopener">Open</a>
+            </div>
+            <div class="latest-x-text">{esc(title)}</div>
+            <div class="latest-x-date">{esc(pub)}</div>
+          </div>
+          """.strip()
+
+          import os
+          os.makedirs("assets", exist_ok=True)
+          with open("assets/latest-x.html", "w", encoding="utf-8") as f:
+            f.write(out)
+
+          print("Wrote assets/latest-x.html")
+          PY
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/latest-x.html
+          git diff --staged --quiet || git commit -m "Update latest X post"
+          git push
