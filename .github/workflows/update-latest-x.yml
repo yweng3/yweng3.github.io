@@ -1,9 +1,9 @@
-name: Update latest tweet embed
+name: Update latest tweet embed (no API, scrape)
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 15 * * *"  # daily (UTC)
+    - cron: "15 15 * * *"  # daily UTC
 
 permissions:
   contents: write
@@ -14,70 +14,35 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch latest tweet id and update index.html
+      - name: Update index.html by scraping latest status id
         env:
-          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
           USERNAME: yweng30
           INDEX_FILE: index.html
         run: |
           set -euo pipefail
 
-          if [ -z "${X_BEARER_TOKEN:-}" ]; then
-            echo "Missing X_BEARER_TOKEN secret"
+          # Fetch profile HTML (may fail if X blocks/changes)
+          HTML=$(curl -fsSL "https://x.com/${USERNAME}")
+
+          # Extract first /<user>/status/<id>
+          STATUS_PATH=$(echo "$HTML" | grep -oE "/${USERNAME}/status/[0-9]{10,}" | head -n 1 || true)
+          if [ -z "$STATUS_PATH" ]; then
+            echo "Could not extract status id from profile HTML. X may be blocking or HTML changed."
             exit 1
           fi
 
-          # Ensure jq exists (usually preinstalled, but keep it safe)
-          sudo apt-get update -y
-          sudo apt-get install -y jq
-
-          echo "Getting user id for @${USERNAME}..."
-          USER_JSON=$(curl -sS -H "Authorization: Bearer ${X_BEARER_TOKEN}" \
-            "https://api.x.com/2/users/by/username/${USERNAME}")
-
-          USER_ID=$(echo "$USER_JSON" | jq -r '.data.id // empty')
-          if [ -z "$USER_ID" ]; then
-            echo "Failed to get user id. Response:"
-            echo "$USER_JSON"
-            exit 1
-          fi
-          echo "User id: $USER_ID"
-
-          echo "Getting latest tweet (excluding replies/retweets)..."
-          TWEETS_JSON=$(curl -sS -H "Authorization: Bearer ${X_BEARER_TOKEN}" \
-            "https://api.x.com/2/users/${USER_ID}/tweets?max_results=5&exclude=replies,retweets")
-
-          TWEET_ID=$(echo "$TWEETS_JSON" | jq -r '.data[0].id // empty')
-          if [ -z "$TWEET_ID" ]; then
-            echo "Failed to get tweet id. Response:"
-            echo "$TWEETS_JSON"
-            exit 1
-          fi
-
+          TWEET_ID=$(echo "$STATUS_PATH" | grep -oE "[0-9]{10,}" | head -n 1)
           NEW_URL="https://twitter.com/${USERNAME}/status/${TWEET_ID}?ref_src=twsrc%5Etfw"
           echo "Latest tweet url: $NEW_URL"
 
-          if [ ! -f "$INDEX_FILE" ]; then
-            echo "Cannot find $INDEX_FILE"
-            exit 1
-          fi
-
-          # Replace only within the first twitter-tweet blockquote anchor href
-          # This targets: <blockquote class="twitter-tweet"><a href="..."></a></blockquote>
-          # (works even if whitespace/newlines exist)
+          # Replace the href inside the first twitter-tweet embed block
           perl -0777 -i -pe "s{(<blockquote\\s+class=\"twitter-tweet\"[^>]*>\\s*<a\\s+href=\")[^\"]*(\"[^>]*>\\s*</a>\\s*</blockquote>)}{\$1$NEW_URL\$2}is" "$INDEX_FILE"
 
-          echo "Updated $INDEX_FILE."
-
-      - name: Commit and push if changed
+      - name: Commit & push if changed
         run: |
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html
-          if git diff --cached --quiet; then
-            echo "No changes."
-            exit 0
-          fi
-          git commit -m "Update latest tweet embed"
+          git diff --cached --quiet || git commit -m "Update latest tweet embed"
           git push
