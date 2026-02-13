@@ -41,9 +41,6 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="CSS/index.js" type="module"></script>
-
-    <!-- Twitter -->
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -80,7 +77,20 @@
 
             <p>This is the official GitHub Pages site of Prof. Yang Weng (ASU).</p>
 
-            <a class="twitter-timeline" href="https://x.com/yweng30">Recent Tweets by Prof. Yang Weng</a>
+            <!-- twitter -->
+            <div class="academic-x-card">
+                <div class="card-top">
+                    <!-- <img src="https://unavatar.io/twitter/yweng30" class="prof-pic"> -->
+                    <!-- <div class="prof-name"><strong>Prof. Yang Weng</strong><span>@yweng30</span></div> -->
+                </div>
+                <div class="card-content">
+                    <p id="gh-tweet-text">Loading latest research update...</p>
+                    <small id="gh-tweet-date"></small>
+                </div>
+                <a href="https://x.com/yweng30" target="_blank" class="follow-link">View on X</a>
+            </div>
+
+
 
             <div class="content-title">
                 Research Interests
