@@ -48,7 +48,7 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config blobal user.name "TweetBot"
+          git config global user.name "TweetBot"
           git config global user.email "bot@github.com"
           git add index.html
           git commit -m "Update latest tweet" || exit 0
