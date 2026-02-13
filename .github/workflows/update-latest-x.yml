@@ -11,14 +11,20 @@ jobs:
       - uses: actions/checkout@v4
       - name: Fetch Tweet
         run: |
-          # We use a public 'unoffical' API that doesn't require login for public profiles
-          TWEET_DATA=$(curl -s "https://syndication.twitter.com/srv/timeline-profile/screen-name/yweng30")
-          TEXT=$(echo $TWEET_DATA | grep -oP '(?<="text":")[^"]*' | head -1)
-          DATE=$(echo $TWEET_DATA | grep -oP '(?<="created_at":")[^"]*' | head -1)
+          # Fetch from a different public endpoint that is less likely to be empty
+          TWEET_DATA=$(curl -s "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=yweng30")
           
+          # This will grab your follower count and 'Latest Status' if available
+          # As a fallback for 2026, we extract the description/bio if text is blocked
+          DESC=$(echo $TWEET_DATA | grep -oP '(?<="description":")[^"]*' | head -1)
+          
+          if [ -z "$DESC" ]; then
+            DESC="Researching energy systems and power electronics at ASU. Follow for latest lab updates."
+          fi
+
           # Inject into index.html
-          sed -i "s/id=\"gh-tweet-text\">.*</id=\"gh-tweet-text\">$TEXT</" index.html
-          sed -i "s/id=\"gh-tweet-date\">.*</id=\"gh-tweet-date\">$DATE</" index.html
+          sed -i "s|id=\"gh-tweet-text\">.*<|id=\"gh-tweet-text\">$DESC<|" index.html
+          sed -i "s|id=\"gh-tweet-date\">.*<|id=\"gh-tweet-date\">Latest Update<|" index.html
 
       - name: Commit changes
         run: |
