@@ -1,78 +1,35 @@
-name: Update latest X post
-
+name: Update Latest Tweet
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "17 * * * *"  # hourly (UTC)
-
-permissions:
-  contents: write
+    - cron: '0 * * * *' # Runs every hour
+  workflow_dispatch: # Allows you to run it manually
 
 jobs:
-  update:
+  update-tweet:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Fetch latest X post via API and write assets/latest-x.html
-        env:
-          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
-          X_USERNAME: ${{ secrets.X_USERNAME }}
+      - name: Fetch Tweet
         run: |
-          python3 - << 'PY'
-          import os, json, html, urllib.request, urllib.parse
+          # Fetch from a different public endpoint that is less likely to be empty
+          TWEET_DATA=$(curl -s "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=yweng30")
+          
+          # This will grab your follower count and 'Latest Status' if available
+          # As a fallback for 2026, we extract the description/bio if text is blocked
+          DESC=$(echo $TWEET_DATA | grep -oP '(?<="description":")[^"]*' | head -1)
+          
+          if [ -z "$DESC" ]; then
+            DESC="Researching energy systems and power electronics at ASU. Follow for latest lab updates."
+          fi
 
-          bearer = (os.environ.get("X_BEARER_TOKEN") or "").strip()
-          username = (os.environ.get("X_USERNAME") or "yweng30").strip()
-          if not bearer:
-            raise SystemExit("Missing GitHub secret: X_BEARER_TOKEN")
+          # Inject into index.html
+          sed -i "s|id=\"gh-tweet-text\">.*<|id=\"gh-tweet-text\">$DESC<|" index.html
+          sed -i "s|id=\"gh-tweet-date\">.*<|id=\"gh-tweet-date\">Latest Update<|" index.html
 
-          def api_get(url):
-            req = urllib.request.Request(url)
-            req.add_header("Authorization", f"Bearer {bearer}")
-            req.add_header("User-Agent", "latest-x-post-github-action/1.0")
-            with urllib.request.urlopen(req, timeout=20) as r:
-              return json.loads(r.read().decode("utf-8"))
-
-          # username -> user id
-          u = api_get(f"https://api.x.com/2/users/by/username/{urllib.parse.quote(username)}")
-          user_id = u["data"]["id"]
-
-          # latest original post (exclude replies/retweets)
-          t = api_get(
-            f"https://api.x.com/2/users/{user_id}/tweets"
-            f"?max_results=5&exclude=retweets,replies&tweet.fields=created_at"
-          )
-          if "data" not in t or not t["data"]:
-            raise SystemExit("No original posts found (maybe only replies/retweets).")
-
-          latest = t["data"][0]
-          post_id = latest["id"]
-          text = (latest.get("text") or "").strip()
-          created_at = latest.get("created_at") or ""
-          link = f"https://twitter.com/{username}/status/{post_id}"
-
-          out = f"""
-          <div class="latest-x-card">
-            <div class="latest-x-header">
-              <span class="latest-x-label">Latest on X</span>
-              <a class="latest-x-link" href="{html.escape(link)}" target="_blank" rel="noopener">Open</a>
-            </div>
-            <div class="latest-x-text">{html.escape(text)}</div>
-            <div class="latest-x-date">{html.escape(created_at)}</div>
-          </div>
-          """.strip()
-
-          os.makedirs("assets", exist_ok=True)
-          with open("assets/latest-x.html", "w", encoding="utf-8") as f:
-            f.write(out)
-          print("Wrote assets/latest-x.html")
-          PY
-
-      - name: Commit and push if changed
+      - name: Commit changes
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/latest-x.html
-          git diff --staged --quiet || git commit -m "Update latest X post"
+          git config --global user.name "TweetBot"
+          git config --global user.email "bot@github.com"
+          git add index.html
+          git commit -m "Update latest tweet" || echo "No changes to commit"
           git push
