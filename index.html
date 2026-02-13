@@ -446,4 +446,20 @@
     document.getElementById("menu-home").classList.add('current');
 </script>
 
+<script>
+function handleTweet(data) {
+    if (data && data.length > 0) {
+        // This pulls the actual latest tweet text from the public widget feed
+        const latestTweet = data[0].tweet_text || data[0].description;
+        document.getElementById('gh-tweet-text').innerText = latestTweet;
+        document.getElementById('gh-tweet-date').innerText = "Real-time Update";
+    }
+}
+
+// This creates a 'guest' request to X's widget server
+const script = document.createElement('script');
+script.src = 'https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=yweng30&callback=handleTweet';
+document.body.appendChild(script);
+</script>
+
 </html>
