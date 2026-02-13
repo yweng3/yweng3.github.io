@@ -9,42 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Fetch Tweet without 402 Error
+      - name: Fetch Tweet
         run: |
-          python3 - << 'PY'
-          import urllib.request
-          import json
-          import re
-
-          def fetch_tweet():
-              # We use a public worker to bypass the 402 payment wall
-              url = "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=yweng30"
-              headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-              
-              try:
-                  req = urllib.request.Request(url, headers=headers)
-                  with urllib.request.urlopen(req) as response:
-                      data = json.loads(response.read().decode())
-                      # This gets your latest follower count/status info
-                      user_info = data[0]
-                      tweet_text = f"Latest updates and research news from Prof. Weng's lab."
-                      if 'formatted_followers_count' in user_info:
-                           tweet_text += f" Join {user_info['formatted_followers_count']} followers for energy systems insights."
-                      
-                      # Update index.html
-                      with open('index.html', 'r') as f:
-                          content = f.read()
-                      
-                      content = re.sub(r'id="gh-tweet-text">.*?</', f'id="gh-tweet-text">{tweet_text}</', content)
-                      
-                      with open('index.html', 'w') as f:
-                          f.write(content)
-              except Exception as e:
-                  print(f"Error: {e}")
-                  exit(1)
-
-          fetch_tweet()
-          PY
+          # We use a public 'unoffical' API that doesn't require login for public profiles
+          TWEET_DATA=$(curl -s "https://syndication.twitter.com/srv/timeline-profile/screen-name/yweng30")
+          TEXT=$(echo $TWEET_DATA | grep -oP '(?<="text":")[^"]*' | head -1)
+          DATE=$(echo $TWEET_DATA | grep -oP '(?<="created_at":")[^"]*' | head -1)
+          
+          # Inject into index.html
+          sed -i "s/id=\"gh-tweet-text\">.*</id=\"gh-tweet-text\">$TEXT</" index.html
+          sed -i "s/id=\"gh-tweet-date\">.*</id=\"gh-tweet-date\">$DATE</" index.html
 
       - name: Commit changes
         run: |
