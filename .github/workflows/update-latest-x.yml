@@ -22,8 +22,8 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config global user.name "TweetBot"
-          git config global user.email "bot@github.com"
+          git config --global user.name "TweetBot"
+          git config --global user.email "bot@github.com"
           git add index.html
-          git commit -m "Update latest tweet" || exit 0
+          git commit -m "Update latest tweet" || echo "No changes to commit"
           git push
