@@ -1,35 +1,132 @@
-name: Update Latest Tweet
+name: Update latest tweet embed
+
 on:
   schedule:
-    - cron: '0 * * * *' # Runs every hour
-  workflow_dispatch: # Allows you to run it manually
+    - cron: "10 9 * * *" # daily 09:10 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
 
 jobs:
-  update-tweet:
+  update-latest-tweet:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Fetch Tweet
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fetch latest tweet ID and patch index.html
+        env:
+          USERNAME: yweng30
+          INDEX_HTML: index.html
         run: |
-          # Fetch from a different public endpoint that is less likely to be empty
-          TWEET_DATA=$(curl -s "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=yweng30")
-          
-          # This will grab your follower count and 'Latest Status' if available
-          # As a fallback for 2026, we extract the description/bio if text is blocked
-          DESC=$(echo $TWEET_DATA | grep -oP '(?<="description":")[^"]*' | head -1)
-          
-          if [ -z "$DESC" ]; then
-            DESC="Researching energy systems and power electronics at ASU. Follow for latest lab updates."
+          set -euo pipefail
+
+          python - <<'PY'
+          import os, re, sys, time
+          import urllib.request
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          username = os.environ.get("USERNAME", "yweng30")
+          index_path = Path(os.environ.get("INDEX_HTML", "index.html"))
+
+          # A larger pool helps because instances come and go.
+          nitter_candidates = [
+              f"https://nitter.net/{username}/rss",
+              f"https://nitter.poast.org/{username}/rss",
+              f"https://nitter.privacydev.net/{username}/rss",
+              f"https://nitter.fdn.fr/{username}/rss",
+              f"https://nitter.1d4.us/{username}/rss",
+              f"https://nitter.kavin.rocks/{username}/rss",
+          ]
+
+          # Proxy fallback: fetch via r.jina.ai (server-side fetch)
+          # This often bypasses “cloud IP blocked” issues.
+          def jina(url: str) -> str:
+              # r.jina.ai/http(s)://...
+              return "https://r.jina.ai/" + url
+
+          UA = "Mozilla/5.0 (compatible; GitHubActionsTweetFetcher/1.1)"
+
+          def fetch(url: str, timeout: int = 25) -> str:
+              req = urllib.request.Request(url, headers={"User-Agent": UA})
+              with urllib.request.urlopen(req, timeout=timeout) as resp:
+                  return resp.read().decode("utf-8", errors="replace")
+
+          def parse_latest_id(xml_text: str) -> str:
+              root = ET.fromstring(xml_text)
+              item = root.find("./channel/item")
+              if item is None:
+                  raise RuntimeError("RSS parse error: no <item> found")
+              link = item.findtext("link", default="")
+              m = re.search(r"/status/(\d+)", link)
+              if not m:
+                  raise RuntimeError(f"Could not parse tweet id from RSS link: {link}")
+              return m.group(1)
+
+          def latest_tweet_id() -> str:
+              last_err = None
+
+              # 1) Direct attempts with retries
+              for url in nitter_candidates:
+                  for attempt in range(3):
+                      try:
+                          xml_text = fetch(url)
+                          return parse_latest_id(xml_text)
+                      except Exception as e:
+                          last_err = e
+                          time.sleep(2 * (attempt + 1))
+
+              # 2) Proxy attempts (r.jina.ai) with retries
+              for url in nitter_candidates:
+                  purl = jina(url)
+                  for attempt in range(3):
+                      try:
+                          xml_text = fetch(purl)
+                          return parse_latest_id(xml_text)
+                      except Exception as e:
+                          last_err = e
+                          time.sleep(2 * (attempt + 1))
+
+              raise RuntimeError(f"All Nitter + proxy attempts failed. Last error: {last_err}")
+
+          tid = latest_tweet_id()
+          print("Latest tweet ID:", tid)
+
+          if not index_path.exists():
+              raise FileNotFoundError(f"{index_path} not found")
+
+          html = index_path.read_text(encoding="utf-8")
+
+          # Your target URL form (preferred)
+          pattern = rf'(https://twitter\.com/{re.escape(username)}/status/)(\d+)(\?ref_src=twsrc%5Etfw)'
+          new_html, n = re.subn(pattern, rf"\g<1>{tid}\g<3>", html)
+
+          # Fallback: any status/<digits> for this username (first occurrence)
+          if n == 0:
+              pattern2 = rf'(https://twitter\.com/{re.escape(username)}/status/)(\d+)'
+              new_html, n2 = re.subn(pattern2, rf"\g<1>{tid}", html, count=1)
+              if n2 == 0:
+                  raise RuntimeError("No matching twitter status URL found in index.html")
+              n = n2
+
+          if new_html != html:
+              index_path.write_text(new_html, encoding="utf-8")
+              print("index.html updated.")
+          else:
+              print("index.html already up to date.")
+          PY
+
+      - name: Commit & push if changed
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
           fi
-
-          # Inject into index.html
-          sed -i "s|id=\"gh-tweet-text\">.*<|id=\"gh-tweet-text\">$DESC<|" index.html
-          sed -i "s|id=\"gh-tweet-date\">.*<|id=\"gh-tweet-date\">Latest Update<|" index.html
-
-      - name: Commit changes
-        run: |
-          git config --global user.name "TweetBot"
-          git config --global user.email "bot@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Update latest tweet" || echo "No changes to commit"
+          git commit -m "chore: update latest tweet embed"
           git push
