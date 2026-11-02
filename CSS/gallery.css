@@ -344,3 +344,15 @@ footer {
   background: #f7f7f7;
   text-align: center;
 }
+/* Keep the shared site navigation compact on gallery pages. */
+nav.menu { padding-top: 0; padding-bottom: 0; }
+
+/* Gallery cards must fit narrow screens; the original image hover scale is
+   disabled on touch-sized viewports to avoid horizontal scrolling. */
+@media (max-width: 1100px) {
+  .Gallery-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); width: 100%; padding: 0; gap: 12px; }
+  .Gallery-grid > * { grid-column: 1 / -1 !important; min-width: 0; }
+  .img-container { margin: 0; height: auto; width: 100%; min-width: 0; }
+  .Gallery-grid img { display: block; max-width: 100%; width: 100%; height: 240px; }
+  .Gallery-grid img:hover { transform: none; }
+}

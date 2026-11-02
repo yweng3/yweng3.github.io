@@ -1,11 +1,13 @@
 <header>
-        <div class="menu">
+        <nav class="menu" aria-label="Primary navigation" id="site-nav-links">
             <div class="menu-image"><a href="http://www.asu.edu/"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Arizona_State_University_logo.svg" align="center" alt="ASU"/></a></div>
+
+            <button type="button" class="menu-toggle" aria-label="Open navigation menu" aria-controls="site-nav-links" aria-expanded="false">&#9776; Menu</button>
 
             <div class="menu-item" id="menu-home"><span><a class="firstlayer" href="https://yweng3.github.io/index.html">Home</a></span></div>
 
             <div class="menu-item dropdown" id="menu-Yang">
-                <span>Yang Weng</span>
+                <span class="dropdown-trigger" role="button" tabindex="0" aria-expanded="false">Yang Weng</span>
                 <i class="fas fa-caret-down"></i>
                 <div class="dropdown-content" style="left:0;">
                     <a href="https://yweng3.github.io/Links/YangWeng/education.html">Education</a>
@@ -18,7 +20,7 @@
             <div class="menu-item" id="menu-award"><span><a class="firstlayer" href="https://yweng3.github.io/Links/YangWeng/award.html">Award/Service</a></span></div>
 
             <div class="menu-item dropdown" id="menu-group">
-                <span>Group</span>
+                <span class="dropdown-trigger" role="button" tabindex="0" aria-expanded="false">Group</span>
                 <i class="fas fa-caret-down"></i>
                 <div class="dropdown-content" style="left:0;">
                     <a href="https://yweng3.github.io/Links/Group/group.html">Group Members</a>
@@ -32,7 +34,7 @@
             <div class="menu-item" id="menu-consurtium"><span><a class="firstlayer" href="https://yweng3.github.io/consortium.html">Consortium</a></span></div>
             
             <div class="menu-item dropdown" id="menu-Workshop">
-                <span>Workshop</span>
+                <span class="dropdown-trigger" role="button" tabindex="0" aria-expanded="false">Workshop</span>
                 <i class="fas fa-caret-down"></i>
                 <div class="dropdown-content" style="left:0;">
                     <a href="https://yweng3.github.io/Links/Workshop/ICRDE_Oct2023.html">Energy Center Workshop</a>
@@ -42,5 +44,5 @@
 
             <div class="menu-item" id="menu-webinar"><span><a class="firstlayer" href="https://yweng3.github.io/webinar.html">Webinar</a></span></div>
 
-        </div>
+        </nav>
         </header>

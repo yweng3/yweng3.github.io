@@ -178,3 +178,45 @@ a[class=flyer]:hover{
     background-color: rgba(240, 69, 40, 0.3);
     border-bottom: none;
 }
+
+/* ===== Responsive webinar listing and individual talks ===== */
+@media (max-width: 1100px) {
+  .container { margin-top: 16px; }
+  .column { padding: 0 16px; }
+  .web { width: 100%; display: flex; flex-direction: column; align-items: stretch; }
+  .web .speaker {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    margin-right: 0;
+    gap: 10px;
+    height: auto;
+    direction: ltr;
+  }
+  .web .speaker .speaker-content { min-width: 0; height: auto; min-height: 190px; }
+  .speaker-photo { height: 150px; }
+  .web .content { width: 100%; height: auto; padding: 15px 0; }
+  .content h2 { font-size: 1.6rem; }
+  .web-individual { float: none; margin: 0; width: 100%; }
+  .web-individual .web .speaker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .web-individual .web .speaker .speaker-content:last-child {
+    grid-column: 1 / -1;
+    min-height: 0;
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+    border: none;
+    overflow-wrap: anywhere;
+  }
+  .web-individual .talktitle { font-size: clamp(1.35rem, 5vw, 2rem); }
+  .bios { width: 100%; overflow-wrap: anywhere; }
+  .materials { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .materials > * { min-width: 0; }
+  .materials iframe, .materials img { width: 100%; max-width: 700px; height: auto; }
+}
+@media (max-width: 600px) {
+  .web .speaker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .web-info span { font-size: 16px; }
+  .web-info i { padding-left: 5px; }
+}
+

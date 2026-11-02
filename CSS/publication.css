@@ -239,3 +239,21 @@ button[class=copy-button] {
 
 
 /**/
+
+
+/* ===== Responsive publication listing ===== */
+@media (max-width: 1100px) {
+  .search input { width: 100%; max-width: 650px; min-width: 0; }
+  .search { width: 100%; }
+  .filter { gap: 4px; }
+  .switch-container { padding-right: 8px; }
+  .pub { min-width: 0; }
+  .pub-detail { min-width: 0; }
+  .bibContent pre { overflow-wrap: anywhere; white-space: pre-wrap; }
+}
+@media (max-width: 600px) {
+  .pub { flex-direction: column; }
+  .pub-teaser { width: 100%; max-width: 260px; height: 130px; }
+  .pub-detail { width: 100%; margin: 12px 0 0; }
+}
+
