@@ -193,8 +193,20 @@ a[class=flyer]:hover{
     height: auto;
     direction: ltr;
   }
-  .web .speaker .speaker-content { min-width: 0; height: auto; min-height: 190px; }
-  .speaker-photo { height: 150px; }
+    .web .speaker .speaker-content {
+        min-width: 0;
+        height: auto;
+        min-height: 0;
+    }
+
+    .web .speaker .speaker-photo {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
   .web .content { width: 100%; height: auto; padding: 15px 0; }
   .content h2 { font-size: 1.6rem; }
   .web-individual { float: none; margin: 0; width: 100%; }
