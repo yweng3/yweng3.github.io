@@ -51,11 +51,16 @@
         <!-- Top-bar Menu -->
         <div id="menu-placeholder"></div>
         <script>
-          fetch('menu.html')
-            .then(response => response.text())
-            .then(data => {
-              document.getElementById('menu-placeholder').innerHTML = data;
-            });
+            fetch("../../menu.html")
+                .then(response => {
+                    if (!response.ok) throw new Error("Could not load menu.html");
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById("menu-placeholder").innerHTML = html;
+                    document.getElementById("menu-home").classList.add("current");
+                })
+                .catch(error => console.error("Menu loading error:", error));
         </script>
 
         <!-- Top Big Title -->
@@ -445,10 +450,5 @@
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon='{"rayId":"845531724e3f5161","version":"2023.10.0","token":"e64fdfc25a574723a13d1f77e07bc18c"}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"927476b37a906c58","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.1.0","token":"e64fdfc25a574723a13d1f77e07bc18c"}' crossorigin="anonymous"></script>
 </body>
-
-<script type="text/javascript">
-    document.getElementById("menu-home").classList.add('current');
-</script>
-
 
 </html>
