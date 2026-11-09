@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Info for Google Search -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="EEE 360 AI-Assisted Virtual Labs | Yang Weng">
+    <meta property="og:description" content="Explore the AI-assisted EEE 360 Virtual Lab and its 12 circuit and power systems experiments.">
+    <meta property="og:image" content="https://yweng3.github.io/Image/Photos/Yang.jpg">
+    <meta property="og:url" content="https://yweng3.github.io/Links/Software/EEE360Lab.html">
+    <meta name="author" content="Yang Weng">
+    <meta name="description" content="EEE 360 AI-assisted virtual laboratory: AC circuits, three-phase power, transformers, and synchronous generators.">
+    <title>EEE 360 Virtual Labs | Yang Weng</title>
+
+    <!-- Existing website dependencies -->
+    <link rel="stylesheet" href="../../CSS/homepage.css">
+    <link rel="stylesheet" href="../../CSS/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+          integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../../CSS/index.js" type="module"></script>
+    <style>
+        /* EEE 360-specific styles, scoped to this page to preserve existing site CSS. */
+        :root {
+            --eee360-maroon: #8C1D40;
+            --eee360-gold: #FFC627;
+            --eee360-text: #292929;
+            --eee360-muted: #555;
+            --eee360-border: #e2e2e2;
+        }
+
+        .eee360-container,
+        .eee360-column { width: 100%; min-width: 0; }
+        .eee360-content {
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 26px 20px 70px;
+            color: var(--eee360-text);
+        }
+        .eee360-content *,
+        .eee360-content *::before,
+        .eee360-content *::after { box-sizing: border-box; }
+        .eee360-back { display: inline-block; margin-bottom: 18px; color: var(--eee360-maroon); font-weight: 600; }
+        .eee360-back:hover { text-decoration: underline; }
+
+        .eee360-intro {
+            padding: 28px 32px;
+            background: #fff;
+            border: 1px solid var(--eee360-border);
+            border-left: 5px solid var(--eee360-maroon);
+            border-radius: 6px;
+        }
+        .eee360-intro h1 {
+            margin: 0 0 14px;
+            color: var(--eee360-maroon);
+            font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+            line-height: 1.3;
+        }
+        .eee360-intro p { margin: 0; font-size: 1rem; line-height: 1.75; }
+        .eee360-overview-image {
+            display: block;
+            width: min(100%, 900px);
+            margin: 24px auto 0;
+            padding: 10px;
+            text-align: center;
+            border-radius: 6px;
+            background: #f8f8f8;
+            border: 1px solid var(--eee360-border);
+        }
+        .eee360-overview-image img { display: block; width: 100%; height: auto; object-fit: contain; }
+        .eee360-overview-image:hover { border-color: var(--eee360-maroon); }
+        .eee360-image-note { margin: 8px 0 0; color: var(--eee360-muted); font-size: 0.82rem; text-align: center; }
+
+        .eee360-section { margin-top: 48px; scroll-margin-top: 25px; }
+        .eee360-section h2 {
+            margin: 0 0 20px;
+            padding: 0 0 12px;
+            color: var(--eee360-maroon);
+            font-size: clamp(1.3rem, 2.3vw, 1.7rem);
+            line-height: 1.35;
+            border-bottom: 3px solid var(--eee360-gold);
+        }
+        .eee360-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+        .eee360-card {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 23px;
+            background: #fff;
+            border: 1px solid var(--eee360-border);
+            border-radius: 6px;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+        .eee360-card:hover { box-shadow: 0 6px 22px rgba(0,0,0,0.08); transform: translateY(-2px); }
+        .eee360-card h3 { margin: 0 0 12px; font-size: 1.2rem; line-height: 1.4; color: var(--eee360-maroon); }
+        .eee360-card p { flex: 1; margin: 0 0 20px; font-size: 0.97rem; line-height: 1.7; }
+        .eee360-gif-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 170px;
+            padding: 10px;
+            background: #f8f8f8;
+            border: 1px solid var(--eee360-border);
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .eee360-gif-link:hover, .eee360-gif-link:focus-visible { border-color: var(--eee360-maroon); outline-offset: 3px; }
+        .eee360-gif-link img { display: block; width: auto; max-width: 100%; height: auto; max-height: 340px; object-fit: contain; }
+        .eee360-view-hint { margin-top: 10px; color: var(--eee360-muted); font-size: 0.8rem; text-align: right; }
+
+        @media (max-width: 740px) {
+            .eee360-content { padding: 18px 12px 48px; }
+            .eee360-intro { padding: 20px 17px; }
+            .eee360-section { margin-top: 36px; }
+            .eee360-grid { grid-template-columns: 1fr; gap: 16px; }
+            .eee360-card { padding: 17px; }
+            .eee360-gif-link { min-height: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .eee360-card { transition: none; }
+            .eee360-card:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <!-- Load the same global menu used by the other site pages. -->
+        <div id="menu-placeholder"></div>
+        <script>
+            fetch("../../menu.html")
+                .then(response => {
+                    if (!response.ok) throw new Error("Could not load menu.html");
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById("menu-placeholder").innerHTML = html;
+                    const groupMenu = document.getElementById("menu-group");
+                    if (groupMenu) groupMenu.classList.add("current");
+                })
+                .catch(error => console.error("Menu loading error:", error));
+        </script>
+
+        <!-- Page title, matching the original Products page structure. -->
+        <div class="bigtitle" id="bigtitle">
+            <div class="thetitle">EEE 360 Virtual Labs</div>
+        </div>
+
+        <main class="row container eee360-container">
+            <div class="column eee360-column">
+                <div class="eee360-content">
+
+                    <!-- Overview: project motivation and development -->
+                    <section class="eee360-intro" aria-labelledby="eee360-intro-title">
+                        <h1 id="eee360-intro-title">AI-assisted Virtual Lab Construction</h1>
+                        <p>The EEE 360 Virtual Lab consists of an MLAPP front end for student interaction and an SLX back end for circuit simulation. AI helped us develop the front end’s click-to-wire controls, Run and Reset workflow, progress messages, and measurement displays. It also helped us map students’ connections to the simulation model and build topology checks that point out wiring errors and guide students toward a correction. For the SLX back end, AI helped us select, connect, and configure Simscape blocks and troubleshoot simulation behavior. One example was modeling a capacitor branch that disconnects when students enter 0 µF. We tested the app and model together in MATLAB and checked the results against circuit theory.</p>
+                    </section>
+                    <a class="eee360-overview-image" href="../../Image/Software/EEE360Lab/EEE360_AI_Assisted_Virtual_Lab.gif" target="_blank" rel="noopener noreferrer" aria-label="View an enlarged demonstration of the EEE 360 virtual lab">
+                        <img src="../../Image/Software/EEE360Lab/EEE360_AI_Assisted_Virtual_Lab.gif" alt="EEE 360 AI-assisted virtual lab interface and circuit simulation overview">
+                    </a>
+                    <p class="eee360-image-note">Virtual lab overview (click to view the full GIF)</p>
+
+                    <!-- Section 1: AC Circuit and Power Basics -->
+                    <section class="eee360-section" id="eee360-section-1" aria-labelledby="eee360-section-1-title">
+                        <h2 id="eee360-section-1-title">AC Circuit and Power Basics</h2>
+                        <div class="eee360-grid">
+                            <article class="eee360-card">
+                                <h3>Lab 01 Introduction</h3>
+                                <p>This lab helps students connect Ohm’s law to a circuit they wire and measure. A variable AC supply drives a resistor. An ammeter in series and a voltmeter across the resistor show that current increases in proportion to voltage when resistance is fixed.</p>
+                                <a class="eee360-gif-link" href="../../Image/Software/EEE360Lab/Lab01_Introduction.gif" target="_blank" rel="noopener noreferrer" aria-label="View the full GIF demonstration for Lab 01 Introduction">
+                                    <img loading="lazy" decoding="async" src="../../Image/Software/EEE360Lab/Lab01_Introduction.gif" alt="Virtual lab demonstration: Lab 01 Introduction">
+                                </a>
+                                <div class="eee360-view-hint">Click GIF to view full size</div>
+                            </article>
+                            <article class="eee360-card">
+                                <h3>Lab 02 The Wattmeter</h3>
+                                <p>This lab helps students understand how the phase difference between voltage and current affects active power. A single-phase wattmeter measures active power for resistive and reactive loads so students can compare it with apparent power. Reversing the meter connections changes the reading’s sign.</p>
+                                <a class="eee360-gif-link" href="../../Image/Software/EEE360Lab/Lab02_The_Wattmeter.gif" target="_blank" rel="noopener noreferrer" aria-label="View the full GIF demonstration for Lab 02 The Wattmeter">
+                                    <img loading="lazy" decoding="async" src="../../Image/Software/EEE360Lab/Lab02_The_Wattmeter.gif" alt="Virtual lab demonstration: Lab 02 The Wattmeter">
+                                </a>
+                                <div class="eee360-view-hint">Click GIF to view full size</div>
+                            </article>
+                            <article class="eee360-card">
+                                <h3>Lab 03 Power Factor</h3>
+                                <p>This lab helps students understand how reactive power lowers power factor and raises line current. A variable capacitor connected in parallel offsets the inductive load’s reactive power. Students adjust its capacitance and use an ammeter to find where line current is lowest.</p>
+                                <a class="eee360-gif-link" href="../../Image/Software/EEE360Lab/Lab03_Power_Factor.gif" target="_blank" rel="noopener noreferrer" aria-label="View the full GIF demonstration for Lab 03 Power Factor">
+                                    <img loading="lazy" decoding="async" src="../../Image/Software/EEE360Lab/Lab03_Power_Factor.gif" alt="Virtual lab demonstration: Lab 03 Power Factor">
+                                </a>
+                                <div class="eee360-view-hint">Click GIF to view full size</div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Section 2: Three Phase Circuits and Power -->
+                    <section class="eee360-section" id="eee360-section-2" aria-labelledby="eee360-section-2-title">
+                        <h2 id="eee360-section-2-title">Three Phase Circuits and Power</h2>
+                        <div class="eee360-grid">
+                            <article class="eee360-card">
+                                <h3>Lab 04 Three-Phase Circuits</h3>
+                                <p>This lab helps students understand how wye and delta connections change the relationships between line and phase quantities. Students connect three load resistors to the three-phase AC supply and use voltmeters and ammeters to compare line and phase voltages and currents for each connection.</p>
+                                <a class="eee360-gif-link" href="../../Image/Software/EEE360Lab/Lab04_Three_Phase_Circuits.gif" target="_blank" rel="noopener noreferrer" aria-label="View the full GIF demonstration for Lab 04 Three-Phase Circuits">
+                                    <img loading="lazy" decoding="async" src="../../Image/Software/EEE360Lab/Lab04_Three_Phase_Circuits.gif" alt="Virtual lab demonstration: Lab 04 Three-Phase Circuits">
+                                </a>
+                                <div class="eee360-view-hint">Click GIF to view full size</div>
+                            </article>
+                            <article class="eee360-card">
+                                <h3>Lab 05 Three-Phase Power</h3>
+                                <p>This lab helps students understand how active and reactive power form the power triangle. Three wye-connected inductors draw reactive power. Adding a series resistor in each phase introduces active power, letting students see how apparent power and power factor change.</p>
+                                <a class="eee360-gif-link" href="../../Image/Software/EEE360Lab/Lab05_Three_Phase_Power.gif" target="_blank" rel="noopener noreferrer" aria-label="View the full GIF demonstration for Lab 05 Three-Phase Power">
+                                    <img loading="lazy" decoding="async" src="../../Image/Software/EEE360Lab/Lab05_Three_Phase_Power.gif" alt="Virtual lab demonstration: Lab 05 Three-Phase Power">
+                                </a>
+                                <div class="eee360-view-hint">Click GIF to view full size</div>
+                            </article>
+                            <article class="eee360-card">
+                                <h3>Lab 06 Two-Wattmeter Method</h3>
+                                <p>This lab helps students understand why two signed wattmeter readings give total active power in a three-phase, three-wire circuit. Students use two separate wattmeters with phase C as the voltage reference, then repeat the measurement with a prewired module.</p>
+                                <a class="eee360-gif-link" href="../../Image/Software/EEE360Lab/Lab06_Two_Wattmeter_Method.gif" target="_blank" rel="noopener noreferrer" aria-label="View the full GIF demonstration for Lab 06 Two-Wattmeter Method">
+                                    <img loading="lazy" decoding="async" src="../../Image/Software/EEE360Lab/Lab06_Two_Wattmeter_Method.gif" alt="Virtual lab demonstration: Lab 06 Two-Wattmeter Method">
+                                </a>
+                                <div class="eee360-view-hint">Click GIF to view full size</div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Section 3: Magnetic Cores and Transformers -->
+                    <section class="eee360-section" id="eee360-section-3" aria-labelledby="eee360-section-3-title">
+                        <h2 id="eee360-section-3-title">Magnetic Cores and Transformers</h2>
+                        <div class="eee360-grid">
+                            <article class="eee360-card">
+                                <h3>Lab 07 Ferromagnetic Core</h3>
+                                <p>This lab helps students understand why a transformer core’s flux density depends on its magnetization history. A current-sense resistor tracks magnetic field strength, and an LM741 integrator derives a flux-density signal from the secondary voltage. An oscilloscope plots the B–H loop in XY mode to examine remanence, coercivity, and hysteresis loss.</p>
+                                <a class="eee360-gif-link" href="../../Image/Software/EEE360Lab/Lab07_Ferromagnetic_Core.gif" target="_blank" rel="noopener noreferrer" aria-label="View the full GIF demonstration for Lab 07 Ferromagnetic Core">
+                                    <img loading="lazy" decoding="async" src="../../Image/Software/EEE360Lab/Lab07_Ferromagnetic_Core.gif" alt="Virtual lab demonstration: Lab 07 Ferromagnetic Core">
+                                </a>
+                                <div class="eee360-view-hint">Click GIF to view full size</div>
+                            </article>
+                            <article class="eee360-card">
+                                <h3>Lab 08 Transformer Equivalent Circuit</h3>
+                                <p>This lab helps students understand how the core and windings appear in a transformer equivalent circuit. A low-power wattmeter measures no-load power. Open-circuit readings identify the shunt branch, and short-circuit readings identify the series impedance.</p>
+                                <a class="eee360-gif-link" href="../../Image/Software/EEE360Lab/Lab08_Transformer_Equivalent_Circuit.gif" target="_blank" rel="noopener noreferrer" aria-label="View the full GIF demonstration for Lab 08 Transformer Equivalent Circuit">
+                                    <img loading="lazy" decoding="async" src="../../Image/Software/EEE360Lab/Lab08_Transformer_Equivalent_Circuit.gif" alt="Virtual lab demonstration: Lab 08 Transformer Equivalent Circuit">
+                                </a>
+                                <div class="eee360-view-hint">Click GIF to view full size</div>
+                            </article>
+                            <article class="eee360-card">
+                                <h3>Lab 09 The Autotransformer</h3>
+                                <p>This lab helps students understand how the turns ratio sets voltage and current ratios in an autotransformer. The tap lets students use the full winding or part of it as the input. Voltmeters and ammeters compare the input and output for step-up and step-down connections.</p>
+                                <a class="eee360-gif-link" href="../../Image/Software/EEE360Lab/Lab09_The_Autotransformer.gif" target="_blank" rel="noopener noreferrer" aria-label="View the full GIF demonstration for Lab 09 The Autotransformer">
+                                    <img loading="lazy" decoding="async" src="../../Image/Software/EEE360Lab/Lab09_The_Autotransformer.gif" alt="Virtual lab demonstration: Lab 09 The Autotransformer">
+                                </a>
+                                <div class="eee360-view-hint">Click GIF to view full size</div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Section 4: Synchronous Generators -->
+                    <section class="eee360-section" id="eee360-section-4" aria-labelledby="eee360-section-4-title">
+                        <h2 id="eee360-section-4-title">Synchronous Generators</h2>
+                        <div class="eee360-grid">
+                            <article class="eee360-card">
+                                <h3>Lab 10 Alternator Under Load</h3>
+                                <p>This lab helps students understand how load type and balance affect an alternator’s terminal voltage. A DC shunt motor drives the synchronous generator, and a tachometer monitors speed. Students compare loaded and unloaded voltages for resistive, inductive, and capacitive loads, then measure the effect of an unbalanced load.</p>
+                                <a class="eee360-gif-link" href="../../Image/Software/EEE360Lab/Lab10_Alternator_Under_Load.gif" target="_blank" rel="noopener noreferrer" aria-label="View the full GIF demonstration for Lab 10 Alternator Under Load">
+                                    <img loading="lazy" decoding="async" src="../../Image/Software/EEE360Lab/Lab10_Alternator_Under_Load.gif" alt="Virtual lab demonstration: Lab 10 Alternator Under Load">
+                                </a>
+                                <div class="eee360-view-hint">Click GIF to view full size</div>
+                            </article>
+                            <article class="eee360-card">
+                                <h3>Lab 11 Alternator Synchronization</h3>
+                                <p>This lab helps students understand why voltage, frequency, phase sequence, and phase angle must match before a generator joins the grid. Voltmeters compare voltages, and a tachometer helps match frequency. The synchronizing module’s three lamps indicate phase sequence and alignment before students close the SYNC switch.</p>
+                                <a class="eee360-gif-link" href="../../Image/Software/EEE360Lab/Lab11_Alternator_Synchronization.gif" target="_blank" rel="noopener noreferrer" aria-label="View the full GIF demonstration for Lab 11 Alternator Synchronization">
+                                    <img loading="lazy" decoding="async" src="../../Image/Software/EEE360Lab/Lab11_Alternator_Synchronization.gif" alt="Virtual lab demonstration: Lab 11 Alternator Synchronization">
+                                </a>
+                                <div class="eee360-view-hint">Click GIF to view full size</div>
+                            </article>
+                            <article class="eee360-card">
+                                <h3>Lab 12 Alternator Power</h3>
+                                <p>This lab helps students understand why excitation mainly changes reactive power and prime mover torque mainly changes active power after synchronization. A dual wattmeter measures active power exchanged with the grid, and a DC ammeter tracks field current as students vary excitation and torque.</p>
+                                <a class="eee360-gif-link" href="../../Image/Software/EEE360Lab/Lab12_Alternator_Power.gif" target="_blank" rel="noopener noreferrer" aria-label="View the full GIF demonstration for Lab 12 Alternator Power">
+                                    <img loading="lazy" decoding="async" src="../../Image/Software/EEE360Lab/Lab12_Alternator_Power.gif" alt="Virtual lab demonstration: Lab 12 Alternator Power">
+                                </a>
+                                <div class="eee360-view-hint">Click GIF to view full size</div>
+                            </article>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

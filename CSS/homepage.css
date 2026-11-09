@@ -413,3 +413,19 @@ table[class=agenda] thead tr:first-child th{
 
 /* Keep fixed header within viewport on desktop too. */
 .menu { box-sizing: border-box; }
+
+/* For highlighting a href link */
+.explore-highlight {
+    animation: exploreColor 1s ease-in-out infinite alternate;
+}
+
+@keyframes exploreColor {
+    0%   { color: #8C1D40; }  /* ASU Maroon */
+    100% { color: #FFC627; }  /* ASU Gold */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .explore-highlight {
+        animation: none;
+    }
+}
