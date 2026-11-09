@@ -33,11 +33,16 @@
         <!-- Top-bar Menu -->
         <div id="menu-placeholder"></div>
         <script>
-          fetch('../../menu.html')
-            .then(response => response.text())
-            .then(data => {
-              document.getElementById('menu-placeholder').innerHTML = data;
-            });
+            fetch("../../menu.html")
+                .then(response => {
+                    if (!response.ok) throw new Error("Could not load menu.html");
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById("menu-placeholder").innerHTML = html;
+                    document.getElementById("menu-group").classList.add("current");
+                })
+                .catch(error => console.error("Menu loading error:", error));
         </script>
 
         <!-- Top Big Title -->
@@ -314,9 +319,5 @@
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon='{"rayId":"8148f1d0a90d1b37","token":"e64fdfc25a574723a13d1f77e07bc18c","version":"2023.8.0","si":100}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon='{"rayId":"815048149f251b19","token":"e64fdfc25a574723a13d1f77e07bc18c","version":"2023.8.0","si":100}' crossorigin="anonymous"></script>
 </body>
-
-<script type="text/javascript">
-    document.getElementById("menu-group").classList.add('current');
-</script>
 
 </html>
