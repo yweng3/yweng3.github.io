@@ -21,42 +21,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
     integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="../../CSS/index.js" type="module"></script>
+    <link rel="stylesheet" href="../../CSS/site.css">
 </head>
 
-<body>
+<body data-site-section="group">
 
     <!-- Entire Page -->
     <div class="row">
 
         <!-- Top-bar Menu -->
-        <div id="menu-placeholder"></div>
-        <script>
-            fetch("../../menu.html")
-                .then(response => {
-                    if (!response.ok) throw new Error("Could not load menu.html");
-                    return response.text();
-                })
-                .then(html => {
-                    document.getElementById("menu-placeholder").innerHTML = html;
-                    document.getElementById("menu-group").classList.add("current");
-                })
-                .catch(error => console.error("Menu loading error:", error));
-        </script>
+        <div id="menu-placeholder"><a class="menu-loading" href="../../menu.html">Navigation</a></div>
+        <noscript><p class="site-notice">Enable JavaScript to use the shared navigation and live listings. <a href="../../menu.html">View all navigation links</a>.</p></noscript>
+        
 
         <!-- Top Big Title -->
         <div class="bigtitle" id="bigtitle">
-            <div class="thetitle">Group Members, Machine Learning Lab for Power Systems
-                <div class="titlebutton">
-                    <a href="group.html"><i class="fas fa-home"></i></a>
-                    <a href="group_Alumni.html">Alumni</a>
-                </div>
+            <div class="thetitle" role="heading" aria-level="1">Group Members, Machine Learning Lab for Power Systems
             </div>
         </div>
 
         <!-- Image and title -->
-        <main class="row container">
+        <main id="main-content" tabindex="-1" class="row container">
             <div class="column">
 
             <div class="content-title">
@@ -74,9 +60,9 @@
                 </div>
             </div>
 
-            <div class="content-title">
+            <h2 class="content-title" id="postdocs">
                 Postdoctoral Scholars
-            </div>
+            </h2>
 
             <div class="personinfo">
                 <div class="personphoto" style="background-image: url(../../Image/Photos/Haoran.jpg);"></div>
@@ -105,12 +91,58 @@
                 </div>
             </div>
 
-            <div class="content-title">
+            <h2 class="content-title" id="phd-students">
                 Ph.D. Students
+            </h2>
+
+
+            <div class="personinfo">
+                <div class="personphoto" style="background-image: url(../../Image/Photos/Lihao.png);"></div>
+                <div class="persontitles">
+                    <p><b>Lihao (Corey) Mai</b></p>
+                    <p>M.S., <a href="https://urldefense.com/v3/__http://ecee.engineering.asu.edu/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCCXCGywUA$">Electrical, Computer, and Energy Engineering</a>, <a href="https://urldefense.com/v3/__http://www.asu.edu/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCDQ_nDp9A$">Arizona State University</a>, 2022</p>
+                    <p>B.S., <a href="https://ece.vt.edu">Electrical and Computer Engineering</a>, <a href="https://www.vt.edu">Virginia Tech</a> and Arizona State University, 2020</p>
+                    <p>Internship: Product Engineering, OPPO Electronics Coporation, Dongguan, China</p>
+                </div>
+            </div>
+
+            <div class="personinfo">
+                <div class="personphoto" style="background-image: url(../../Image/Photos/Chenhan.jpg);"></div>
+                <div class="persontitles">
+                    <p><b>Chenhan Xiao</b></p>
+                    <p>Graduate Study, <a href="https://iiis.tsinghua.edu.cn/en/">Institute for Interdisciplinary Information Sciences</a>, <a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a>, China, 2021</p>
+                    <p>B.S., Mathematics, <a href="https://english.bnu.edu.cn/">Beijing Normal University</a>, China, 2020</p>
+                    <p>Selected Publication: "Distribution Grid Line Outage Identification with Unknown Pattern and Performance Guarantee", IEEE Transactions on Power Systems 2023</p>
+                    <p>Undergraduate Ranking: 1st out of 136 students. National Fellowship (Twice), 2017 and 2018</p>
+                </div>
             </div>
 
 
             <div class="personinfo">
+                <div class="personphoto" style="background-image: url(../../Image/Photos/guangwen.jpg);"></div>
+                <div class="persontitles">
+                    <p><b>Guangwen Wang</b></p>
+                    <p>M.S., Electrical, Computer, and Energy Engineering, <a href="https://www.columbia.edu/">Columbia University</a>, 2023</p>
+                    <p>B.S., Electrical Engineering, <a href="https://english.hust.edu.cn/">Huazhong University of Science and Technology</a>, China, 2021</p>
+                </div>
+            </div>
+
+            <div class="personinfo">
+                <div class="personphoto" style="background-image: url(../../Image/Photos/yihan.jpg);"></div>
+                <div class="persontitles">
+                    <p><b>Yihan Huang</b></p>
+                    <p>M.Eng., Electrical and Computer Engineering, <a href="https://www.cornell.edu/">Cornell University</a>, 2026</p>
+                    <p>B.Eng., Electrical and Electronics Engineering (First Class Honours), <a href="https://www.northumbria.ac.uk/">Northumbria University</a>, 2025</p>
+                    <p>B.Eng., Electrical Engineering and Automation, <a href="https://en.njnu.edu.cn/">Nanjing Normal University</a>, 2025</p>
+                    <p>Internship: IEC International Standards Promotion Center, Electrical Engineer, Nanjing, China</p>
+                </div>
+            </div>
+
+            <h2 class="content-title" id="alumni">
+                Alumni
+            </h2>
+
+                        <div class="personinfo">
                 <div class="personphoto" style="background-image: url(../../Image/Photos/Jingyi2.png);"></div>
                 <div class="persontitles">
                     <p><b>Jingyi Yuan</b></p>
@@ -158,17 +190,6 @@
             </div>
 
             <div class="personinfo">
-                <div class="personphoto" style="background-image: url(../../Image/Photos/Chenhan.jpg);"></div>
-                <div class="persontitles">
-                    <p><b>Chenhan Xiao</b></p>
-                    <p>Graduate Study, <a href="https://iiis.tsinghua.edu.cn/en/">Institute for Interdisciplinary Information Sciences</a>, <a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a>, China, 2021</p>
-                    <p>B.S., Mathematics, <a href="https://english.bnu.edu.cn/">Beijing Normal University</a>, China, 2020</p>
-                    <p>Selected Publication: "Distribution Grid Line Outage Identification with Unknown Pattern and Performance Guarantee", IEEE Transactions on Power Systems 2023</p>
-                    <p>Undergraduate Ranking: 1st out of 136 students. National Fellowship (Twice), 2017 and 2018</p>
-                </div>
-            </div>
-
-            <div class="personinfo">
                 <div class="personphoto" style="background-image: url(../../Image/Photos/Jiaqi.jpg);"></div>
                 <div class="persontitles">
                     <p><b>Jiaqi Wu</b></p>
@@ -177,18 +198,7 @@
                     <p>University Graduate Fellowship at ASU, 2021.</p>
                 </div>
             </div>
-
-
-            <div class="personinfo">
-                <div class="personphoto" style="background-image: url(../../Image/Photos/Lihao.png);"></div>
-                <div class="persontitles">
-                    <p><b>Lihao (Corey) Mai</b></p>
-                    <p>M.S., <a href="https://urldefense.com/v3/__http://ecee.engineering.asu.edu/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCCXCGywUA$">Electrical, Computer, and Energy Engineering</a>, <a href="https://urldefense.com/v3/__http://www.asu.edu/__;!!IKRxdwAv5BmarQ!Ic12GzL7etARAhQ5d46YF0npFZ2n5FYwT0de77DLkJebIoc7Q-15N5KTAKdXCCDQ_nDp9A$">Arizona State University</a>, 2022</p>
-                    <p>B.S., <a href="https://ece.vt.edu">Electrical and Computer Engineering</a>, <a href="https://www.vt.edu">Virginia Tech</a> and Arizona State University, 2020</p>
-                    <p>Internship: Product Engineering, OPPO Electronics Coporation, Dongguan, China</p>
-                </div>
-            </div>
-
+            
             <div class="personinfo">
                 <div class="personphoto" style="background-image: url(../../Image/Photos/Shengzhe.png);"></div>
                 <div class="persontitles">
@@ -208,23 +218,6 @@
                     <p>Second Place Award: National Undergraduate Electronic Design Competition (NUEDC), 2021</p>
                 </div>
             </div>
-
-            <div class="personinfo">
-                <div class="personphoto" style="background-image: url(../../Image/Photos/guangwen.jpg);"></div>
-                <div class="persontitles">
-                    <p><b>Guangwen Wang</b></p>
-                    <p>M.S., Electrical, Computer, and Energy Engineering, <a href="https://www.columbia.edu/">Columbia University</a>, 2023</p>
-                    <p>B.S., Electrical Engineering, <a href="https://english.hust.edu.cn/">Huazhong University of Science and Technology</a>, China, 2021</p>
-                </div>
-            </div>
-
-
-
-
-            <div class="content-title">
-                Alumni
-            </div>
-
 
             <div class="personinfo">
                 <div class="personphoto" style="background-image: url(../../Image/Photos/Ken.png);"></div>
